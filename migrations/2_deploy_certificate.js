@@ -1,4 +1,4 @@
-const Certificate = artifacts.require("Certificate");
+const Certificate = artifacts.require("./Certificate.sol");
 
 module.exports = function (deployer) {
     deployer.deploy(Certificate);
