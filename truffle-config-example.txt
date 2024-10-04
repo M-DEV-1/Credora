@@ -1,0 +1,14 @@
+module.exports = {
+  networks: {
+    development: {
+      host: "127.0.0.1",     // Your local blockchain (Ganache)
+      port: 8545,            // Ganache CLI default, or 7545 for Ganache GUI
+      network_id: "*"        // Accepts any network id
+    }
+  },
+  compilers: {
+    solc: {
+      version: "^0.8.0"      // Specifies the Solidity compiler version (>=0.8.0)
+    }
+  }
+};
