@@ -14,6 +14,8 @@ contract Certificate {
     mapping(address => CertificateData[]) public certificates;
     // maps an ethereum address to an array of certificatedata structs for easy retrieval.
 
+    address public issuer; // Store the issuer's address
+
     event CertificateIssued(
         address indexed issuedTo,
         string certHash,
@@ -23,6 +25,15 @@ contract Certificate {
     );
     // emitted when a certificate is issued, logging the recipient's address, cert hash, issuer name, name, and reason.
 
+    constructor() {
+        issuer = msg.sender; // Set the deployer as the issuer
+    }
+
+    modifier onlyIssuer() {
+        require(msg.sender == issuer, "Only the issuer can issue certificates");
+        _; // Continue with function execution if condition is met
+    }
+
     function issueCertificate(
 
         address _to,
@@ -31,7 +42,14 @@ contract Certificate {
         string memory _issuedToName, 
         string memory _reason
 
-    ) public {
+    ) public onlyIssuer{ //restrict access
+        
+        // check for existing certificates to prevent duplication
+        for(uint i = 0; i<certificates[_to].length; i++)
+        {
+            require(keccak256(abi.encodePacked(certificates[_to][i].certHash)) != keccak256(abi.encodePacked(_certHash)), "Certificate already issued!");
+        }
+
         // issues a new certificate to the specified address.
 
         certificates[_to].push(CertificateData({
