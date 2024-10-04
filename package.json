@@ -1,0 +1,19 @@
+{
+  "name": "credora-ieee",
+  "version": "1.0.0",
+  "description": "Credora is a decentralized certificate verification system designed for educational institutions to issue digital certificates securely on the Ethereum blockchain. By leveraging blockchain technology, Credora eliminates the need for traditional background checks and third-party verification services, allowing employers and institutions to verify credentials instantly and reliably.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "truffle": "^5.11.5",
+    "web3": "^4.13.0"
+  }
+}
