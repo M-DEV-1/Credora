@@ -2,72 +2,158 @@
 pragma solidity ^0.8.19;
 
 contract Certificate {
-    
     struct CertificateData {
         string certHash;      // IPFS hash of the certificate
         string issuerName;    // issuer's name
         address issuedTo;     // recipient's address
         string issuedToName;  // recipient's human-readable name
         string reason;        // reason for the certificate
+        uint256 issuedAt;    // timestamp when certificate was issued
+        bool isValid;        // flag to track if certificate is still valid
+        bytes32 uniqueID;    // unique identifier for the certificate
     }
 
     mapping(address => CertificateData[]) public certificates;
-    // maps an ethereum address to an array of certificatedata structs for easy retrieval.
-
-    address public issuer; // Store the issuer's address
-
+    mapping(bytes32 => bool) public certificateExists;  // Track unique certificates
+    mapping(bytes32 => bool) public revokedCertificates;  // Track revoked certificates
+    
+    address public immutable issuer;
+    
     event CertificateIssued(
         address indexed issuedTo,
         string certHash,
         string issuerName,
-        string issuedToName,  // recipient's name
+        string issuedToName,
+        string reason,
+        bytes32 uniqueID
+    );
+
+    event CertificateRevoked(
+        bytes32 indexed uniqueID,
         string reason
     );
-    // emitted when a certificate is issued, logging the recipient's address, cert hash, issuer name, name, and reason.
 
     constructor() {
-        issuer = msg.sender; // Set the deployer as the issuer
+        issuer = msg.sender;
     }
 
     modifier onlyIssuer() {
         require(msg.sender == issuer, "Only the issuer can issue certificates");
-        _; // Continue with function execution if condition is met
+        _;
+    }
+
+    // Generate a unique ID for each certificate
+    function generateUniqueID(
+        address _to,
+        string memory _certHash,
+        uint256 _timestamp
+    ) internal pure returns (bytes32) {
+        return keccak256(abi.encodePacked(_to, _certHash, _timestamp));
     }
 
     function issueCertificate(
-
         address _to,
         string memory _certHash,
         string memory _issuerName,
-        string memory _issuedToName, 
+        string memory _issuedToName,
         string memory _reason
-
-    ) public onlyIssuer{ //restrict access
+    ) public onlyIssuer {
+        require(_to != address(0), "Invalid recipient address");
+        require(bytes(_certHash).length > 0, "Certificate hash cannot be empty");
         
-        // check for existing certificates to prevent duplication
-        for(uint i = 0; i<certificates[_to].length; i++)
-        {
-            require(keccak256(abi.encodePacked(certificates[_to][i].certHash)) != keccak256(abi.encodePacked(_certHash)), "Certificate already issued!");
-        }
+        // Generate unique ID for the certificate
+        bytes32 uniqueID = generateUniqueID(_to, _certHash, block.timestamp);
+        require(!certificateExists[uniqueID], "Certificate with this ID already exists");
 
-        // issues a new certificate to the specified address.
-
-        certificates[_to].push(CertificateData({
+        // Create new certificate
+        CertificateData memory newCert = CertificateData({
             certHash: _certHash,
             issuerName: _issuerName,
             issuedTo: _to,
-            issuedToName: _issuedToName,  // store the name
-            reason: _reason
-        }));
-        // adds a new certificatedata struct to the recipient's array.
+            issuedToName: _issuedToName,
+            reason: _reason,
+            issuedAt: block.timestamp,
+            isValid: true,
+            uniqueID: uniqueID
+        });
 
-        emit CertificateIssued(_to, _certHash, _issuerName, _issuedToName, _reason);
-        // logs the certificate issuance on the blockchain.
+        certificates[_to].push(newCert);
+        certificateExists[uniqueID] = true;
+
+        emit CertificateIssued(
+            _to, 
+            _certHash, 
+            _issuerName, 
+            _issuedToName, 
+            _reason,
+            uniqueID
+        );
     }
-    // issues a certificate to a specified address and emits an event.
 
+    // Verify a specific certificate by its unique ID
+    function verifyCertificate(bytes32 _uniqueID) public view returns (
+        bool isValid,
+        CertificateData memory certData
+    ) {
+        require(certificateExists[_uniqueID], "Certificate does not exist");
+        
+        // Check if certificate is revoked
+        if (revokedCertificates[_uniqueID]) {
+            return (false, CertificateData("", "", address(0), "", "", 0, false, _uniqueID));
+        }
+
+        // Find the certificate
+        address recipient = findCertificateRecipient(_uniqueID);
+        CertificateData[] memory recipientCerts = certificates[recipient];
+        
+        for (uint i = 0; i < recipientCerts.length; i++) {
+            if (recipientCerts[i].uniqueID == _uniqueID) {
+                return (true, recipientCerts[i]);
+            }
+        }
+        
+        return (false, CertificateData("", "", address(0), "", "", 0, false, _uniqueID));
+    }
+
+    // Helper function to find certificate recipient by uniqueID
+    function findCertificateRecipient(bytes32 _uniqueID) internal view returns (address) {
+        for (uint i = 0; i < certificates[msg.sender].length; i++) {
+            if (certificates[msg.sender][i].uniqueID == _uniqueID) {
+                return msg.sender;
+            }
+        }
+        return address(0);
+    }
+
+    // Revoke a certificate
+    function revokeCertificate(bytes32 _uniqueID, string memory _reason) public onlyIssuer {
+        require(certificateExists[_uniqueID], "Certificate does not exist");
+        require(!revokedCertificates[_uniqueID], "Certificate is already revoked");
+        
+        revokedCertificates[_uniqueID] = true;
+        emit CertificateRevoked(_uniqueID, _reason);
+    }
+
+    // Get all certificates for an address
     function getCertificates(address _owner) public view returns (CertificateData[] memory) {
         return certificates[_owner];
     }
-    // retrieves all certificates associated with a given address and returns an array of certificatedata structs for the specified owner.
+
+    // Verify certificate by hash (additional verification method)
+    function verifyCertificateByHash(address _recipient, string memory _certHash) 
+        public view returns (bool, CertificateData memory) {
+        CertificateData[] memory recipientCerts = certificates[_recipient];
+        
+        for (uint i = 0; i < recipientCerts.length; i++) {
+            if (keccak256(abi.encodePacked(recipientCerts[i].certHash)) == 
+                keccak256(abi.encodePacked(_certHash))) {
+                return (
+                    !revokedCertificates[recipientCerts[i].uniqueID],
+                    recipientCerts[i]
+                );
+            }
+        }
+        
+        return (false, CertificateData("", "", address(0), "", "", 0, false, bytes32(0)));
+    }
 }
