@@ -1,5 +1,6 @@
 import { Navbar } from "../components/Navbar.jsx";
 import { Button } from "../components/ui/button";
+import React from 'react';
 export const CertificateHome = () => {
   return(
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">

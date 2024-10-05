@@ -13,28 +13,32 @@ import { Services } from "./components/Services";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import "./App.css";
-import './index.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CertificateHome } from "./pages/CertificateHome";
 
-
- 
 function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <About />
-      <HowItWorks />
-      <Features />
-      <Services />
-      <Cta />
-      <Testimonials />
-      <Team />
-      <Pricing />
-      <Newsletter />
-      <FAQ />
-      <Footer />
-      <ScrollToTop />
+      <Router>
+        <Navbar />
+        <Hero />
+        <Routes>
+          <Route path="/certificate-home" element={<CertificateHome />}></Route>
+        </Routes>
+        <About />
+        <HowItWorks />
+        <Features />
+        <Services />
+        <Cta />
+        <Testimonials />
+        <Team />
+        <Pricing />
+        <Newsletter />
+        <FAQ />
+        <Footer />
+        <ScrollToTop />
+      </Router>
     </>
   );
 }
