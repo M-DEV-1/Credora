@@ -37,7 +37,7 @@ const routeList = [
   },
 ];
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -120,11 +120,11 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="#" // Update with the actual sign-in link
-              target="_blank"
+              href="/certificate-home" // Update with the actual sign-in link
+              target=""
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              Sign In
+              Certificates
             </a>
           </div>
         </NavigationMenuList>
@@ -132,3 +132,5 @@ export const Navbar = () => {
     </header>
   );
 };
+
+export default Navbar;

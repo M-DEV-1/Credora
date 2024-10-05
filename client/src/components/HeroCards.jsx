@@ -12,6 +12,7 @@ import {
 import { AlignVerticalSpaceBetween, Check, Linkedin } from "lucide-react";
 import { LightBulbIcon } from "./Icons.jsx";
 import { GitHubLogoIcon, SpaceBetweenHorizontallyIcon } from "@radix-ui/react-icons";
+import { Link } from "react-router-dom"
 
 export const HeroCards = () => {
   return (
@@ -140,7 +141,9 @@ export const HeroCards = () => {
         </CardHeader>
 
         <CardContent>
+          <Link to="/certificate-home">
           <Button className="w-full">Start Free Trial</Button>
+          </Link>
         </CardContent>
 
         <hr className="w-4/5 m-auto mb-4" />

@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge.jsx";
 import { Button } from "@/components/ui/button.jsx";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -105,7 +106,9 @@ export const Pricing = () => {
             </CardHeader>
 
             <CardContent>
+            <Link to="/certificate-home">
               <Button className="w-full">{pricing.buttonText}</Button>
+            </Link>
             </CardContent>
 
             <hr className="w-4/5 m-auto mb-4" />

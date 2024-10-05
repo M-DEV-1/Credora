@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { HeroCards } from "./HeroCards";
 import { GitHubLogoIcon } from "@radix-ui/react-icons"; // Ensure this imports correctly
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -27,9 +28,11 @@ export const Hero = () => {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">Get Started</Button>
-
-          {/* GitHub Button */}
+          <Link to="/certificate-home">
+            <Button className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">
+              Get Started
+            </Button>
+          </Link>
           <a
             href="https://github.com/M-DEV-1/Credora" // Replace with your actual GitHub repository link
             target="_blank"
