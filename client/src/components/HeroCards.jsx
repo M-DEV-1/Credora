@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.jsx";
+import { Badge } from "./ui/badge.jsx";
+import { Button, buttonVariants } from "@/components/ui/button.jsx";
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
+} from "@/components/ui/card.jsx";
 import { Check, Linkedin } from "lucide-react";
 import { LightBulbIcon } from "./Icons.jsx";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
