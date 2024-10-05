@@ -37,7 +37,7 @@ export const Services = () => {
 
           <div className="flex flex-col gap-6">
             {serviceList.map(({ title, description }) => (
-              <Card key={title} className="hover:scale-105 transition-transform duration-300">
+              <Card key={title} className="hover:scale-105 transition-transform duration-300 hover:border-primary hover:shadow-md hover:shadow-primary-foreground">
                 <CardHeader className="space-y-1 flex flex-col md:flex-row justify-start items-start gap-4">
                   <div className="mt-1 bg-primary/20 p-3 rounded-2xl flex items-center justify-center">
                     {/* Placeholder for potential icon */}

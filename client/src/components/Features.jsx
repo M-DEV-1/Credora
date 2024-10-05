@@ -41,7 +41,6 @@ const featureList = [
   "Minimalist Interface",
   "Mobile Compatibility",
   "Data Privacy",
-  "Customizable Templates",
 ];
 
 export const Features = () => {
@@ -57,7 +56,7 @@ export const Features = () => {
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature) => (
           <div key={feature}>
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className="text-sm hover:scale-105 transition-transform ease-in-out hover:bg-primary hover:text-white">
               {feature}
             </Badge>
           </div>
@@ -66,7 +65,7 @@ export const Features = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map(({ title, description, image }) => (
-          <Card key={title}>
+          <Card key={title} className="hover:scale-105 transition-transform hover:shadow-md">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>
