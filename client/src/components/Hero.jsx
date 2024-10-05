@@ -2,11 +2,11 @@ import { Button } from "./ui/button";
 import { HeroCards } from "./HeroCards";
 import { GitHubLogoIcon } from "@radix-ui/react-icons"; // Ensure this imports correctly
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import {Link} from 'react-router-dom';
 export const Hero = () => {
   return (
     
-    <Router>
+    // <Router>
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
       <div className="text-center lg:text-start space-y-6">
         <main className="text-5xl md:text-6xl font-bold">
@@ -30,8 +30,9 @@ export const Hero = () => {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">Get Started</Button>
-
+          {/* <Link to="/CertificateHome"> */}
+          <Button  className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">Get Started</Button>
+          {/* </Link> */}
           {/* GitHub Button */}
           <a
             href="https://github.com/M-DEV-1/Credora" // Replace with your actual GitHub repository link
@@ -53,6 +54,6 @@ export const Hero = () => {
       {/* Shadow effect */}
       <div className="shadow"></div>
     </section>
-    </Router>
+    // </Router>
   );
 };

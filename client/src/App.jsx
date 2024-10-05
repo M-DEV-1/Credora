@@ -14,7 +14,9 @@ import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import "./App.css";
 import './index.css'
-// import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
  
 function App() {
   return (
