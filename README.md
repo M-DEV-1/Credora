@@ -2,6 +2,8 @@
 
 Powerpoint Presentation: https://drive.google.com/file/d/15vEaewEvpACTD3X47PwQbk2o_H8waVrj/view?usp=sharing
 
+Live Deployment: https://credora-chi.vercel.app/
+
 ## Overview
 
 Credora is a decentralized certificate verification system designed for educational institutions to issue digital certificates securely on the Ethereum blockchain. By leveraging blockchain technology, Credora eliminates the need for traditional background checks and third-party verification services, allowing employers and institutions to verify credentials instantly and reliably.
