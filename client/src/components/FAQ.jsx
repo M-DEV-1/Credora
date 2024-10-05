@@ -8,33 +8,31 @@ import {
 
 const FAQList = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
+    question: "Is Credora free to use?",
+    answer: "Yes, Credora allows users to issue and verify limited certificates for free on our platform.",
     value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+    question: "How do I issue a certificate?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "To issue a certificate, fill out the Certificate Form with the recipient's details, upload any relevant files, and submit. Your certificate will be securely stored on the blockchain.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet Consectetur natus dolores minus quibusdam?",
+    question: "Can I verify a certificate?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+      "Yes, you can verify any certificate issued through Credora by entering the recipient's address or certificate ID on our verification page.",
     value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "What type of certificates can I issue?",
+    answer: "Credora allows you to issue a variety of certificates, including educational credentials, achievement certificates, and more.",
     value: "item-4",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
+    question: "What if I need support?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "If you have any questions or need assistance, feel free to contact us through our support page. We're here to help!",
     value: "item-5",
   },
 ];

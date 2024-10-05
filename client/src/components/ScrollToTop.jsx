@@ -7,11 +7,8 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
-      }
+      // Show the button when scrolled more than 400px
+      setShowTopBtn(window.scrollY > 400);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,10 +20,10 @@ export const ScrollToTop = () => {
   }, []);
 
   const goToTop = () => {
-    window.scroll({
+    window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth', // Add smooth scrolling effect
+      behavior: 'smooth', // Smooth scrolling effect
     });
   };
 
@@ -35,10 +32,11 @@ export const ScrollToTop = () => {
       {showTopBtn && (
         <Button
           onClick={goToTop}
-          className="fixed bottom-4 right-4 opacity-90 shadow-md"
+          className="fixed bottom-6 right-6 opacity-90 shadow-md bg-primary text-white hover:bg-primary/80 transition-colors duration-200 ease-in-out" // Updated styling
           size="icon"
+          aria-label="Scroll to top" // Accessibility improvement
         >
-          <ArrowUpToLine className="h-4 w-4" />
+          <ArrowUpToLine className="h-5 w-5" /> {/* Increased icon size for better visibility */}
         </Button>
       )}
     </>

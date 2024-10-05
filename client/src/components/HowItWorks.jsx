@@ -1,31 +1,25 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "../components/Icons";
+import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "../components/Icons"; // Ensure these icons are appropriate for the context
 
 // Array of features with their respective properties
 const features = [
   {
     icon: <MedalIcon />,
     title: "Accessibility",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
-  },
-  {
-    icon: <MapIcon />,
-    title: "Community",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    description: "Easily access and verify your certificates from anywhere at any time with our user-friendly platform.",
   },
   {
     icon: <PlaneIcon />,
     title: "Scalability",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    description: "Seamlessly scale your certificate management system as your needs grow with our flexible solutions.",
   },
   {
     icon: <GiftIcon />,
     title: "Gamification",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    description: "Engage users with gamified elements to encourage continuous learning and certificate achievement.",
   },
 ];
 
-// HowItWorks component rendering the section with features
 export const HowItWorks = () => {
   return (
     <section id="howItWorks" className="container text-center py-24 sm:py-32">
@@ -34,13 +28,14 @@ export const HowItWorks = () => {
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Works{" "}
         </span>
-c      </h2>
+      </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
+        Discover how Credora empowers individuals and organizations to securely issue and verify digital certificates.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map(({ icon, title, description }) => (
-          <Card key={title} className="bg-muted/50">
+          <Card key={title} className="bg-muted/50 transform transition-transform duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="grid gap-4 place-items-center">
                 {icon}

@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
-import { buttonVariants } from "./ui/button";
 import { HeroCards } from "./HeroCards";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons"; // Ensure this imports correctly
 
 export const Hero = () => {
   return (
@@ -24,11 +23,22 @@ export const Hero = () => {
         </main>
 
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Issue and Verify your certificates in the most secure and efficient manner!
+          Issue and verify your certificates securely and efficiently!
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/2">Get Started</Button>
+          <Button className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">Get Started</Button>
+
+          {/* GitHub Button */}
+          <a
+            href="https://github.com/M-DEV-1/Credora" // Replace with your actual GitHub repository link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-1/3 inline-flex items-center justify-center border border-primary rounded-md p-2 text-primary transition-colors duration-300 hover:bg-primary hover:text-white"
+          >
+            <GitHubLogoIcon className="mr-2" />
+            View on GitHub
+          </a>
         </div>
       </div>
 
