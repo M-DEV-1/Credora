@@ -8,6 +8,28 @@ Live Deployment: https://credora-chi.vercel.app/
 
 Credora is a decentralized certificate verification system designed for educational institutions to issue digital certificates securely on the Ethereum blockchain. By leveraging blockchain technology, Credora eliminates the need for traditional background checks and third-party verification services, allowing employers and institutions to verify credentials instantly and reliably.
 
+## How to run
+
+``git clone https://www.github.com/M-DEV-1/Credora.git``
+
+``npm install``
+
+``cd client``
+
+``npm install``
+
+``npm run dev``
+
+Check for any issues, none should be there if properly configured
+
+``cd ..``
+
+``truffle compile``
+
+``truffle migrate --network development``
+
+``truffle test``
+
 ## Features
 
 - **Secure Certificate Issuance**: Educational institutions can issue tamper-proof digital certificates directly on the blockchain.
