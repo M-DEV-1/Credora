@@ -18,7 +18,20 @@ import "./App.css";
 function App() {
   return (
     <>
-      
+      <Navbar />
+      <Hero />
+      <About />
+      <HowItWorks />
+      <Features />
+      <Services />
+      <Cta />
+      <Testimonials />
+      <Team />
+      <Pricing />
+      <Newsletter />
+      <FAQ />
+      <Footer />
+      <ScrollToTop />
     </>
   );
 }
