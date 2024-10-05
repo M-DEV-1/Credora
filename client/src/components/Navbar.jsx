@@ -37,7 +37,7 @@ const routeList = [
   },
 ];
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -132,3 +132,5 @@ export const Navbar = () => {
     </header>
   );
 };
+
+export default Navbar;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoIcon } from "./Icons.jsx";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer id="footer">
       <hr className="w-11/12 mx-auto" />
@@ -93,3 +93,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;
