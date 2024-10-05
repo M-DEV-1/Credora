@@ -13,6 +13,7 @@ import { Services } from "./components/Services";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import "./App.css";
+import './index.css'
 // import "./index.css";
  
 function App() {

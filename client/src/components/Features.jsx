@@ -7,41 +7,40 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import image from "../assets/growth.png";
-import image3 from "../assets/reflecting.png";
-import image4 from "../assets/looking-ahead.png";
+import image from "../assets/growth.png";  // Image for AI-Powered insights
+import image3 from "../assets/reflecting.png"; // Image for Intuitive user interface
+import image4 from "../assets/looking-ahead.png"; // Image for Responsive Design
 
 const features = [
   {
-    title: "Responsive Design",
+    title: "Secure Certificate Issuance",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Utilize blockchain technology to issue certificates securely and transparently, ensuring authenticity.",
     image: image4,
   },
   {
-    title: "Intuitive user interface",
+    title: "User-Friendly Interface",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Our intuitive interface makes it easy for both issuers and recipients to navigate the platform effortlessly.",
     image: image3,
   },
   {
-    title: "AI-Powered insights",
+    title: "Real-Time Verification",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Certificates can be verified instantly using the recipient's address or certificate ID, enhancing trust.",
     image: image,
   },
 ];
 
 const featureList = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "Blockchain Technology",
+  "Instant Verification",
+  "Secure Storage",
+  "User-Friendly Design",
+  "Cross-Platform Access",
+  "Minimalist Interface",
+  "Mobile Compatibility",
+  "Data Privacy",
 ];
 
 export const Features = () => {
@@ -57,7 +56,7 @@ export const Features = () => {
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature) => (
           <div key={feature}>
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className="text-sm hover:scale-105 transition-transform ease-in-out hover:bg-primary hover:text-white">
               {feature}
             </Badge>
           </div>
@@ -66,7 +65,7 @@ export const Features = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map(({ title, description, image }) => (
-          <Card key={title}>
+          <Card key={title} className="hover:scale-105 transition-transform hover:shadow-md">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>
@@ -76,7 +75,7 @@ export const Features = () => {
             <CardFooter>
               <img
                 src={image}
-                alt="About feature"
+                alt={title} // Changed to dynamic alt text
                 className="w-[200px] lg:w-[300px] mx-auto"
               />
             </CardFooter>

@@ -9,45 +9,40 @@ import {
 
 const testimonials = [
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe",
-    comment: "This landing page is awesome!",
+    image: "https://i.pravatar.cc/150?img=10", // Emma Watson
+    name: "Emma Watson",
+    userName: "@EmmaWatson",
+    comment: "Credora has transformed the way we approach our projects. Their tools make collaboration seamless and effective. Highly recommend!",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe1",
-    comment:
-      "Lorem ipsum dolor sit amet,empor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
+    image: "https://i.pravatar.cc/150?img=20", // Dwayne Johnson
+    name: "Dwayne Johnson",
+    userName: "@TheRock",
+    comment: "Working with Credora was a game changer for our team. The platform is user-friendly and provides great support for any queries!",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe2",
-    comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    image: "https://i.pravatar.cc/150?img=30", // Taylor Swift
+    name: "Taylor Swift",
+    userName: "@taylorswift",
+    comment: "As a creative, I need tools that inspire me. Credora does just that. Their service is top-notch and the community is fantastic.",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe3",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: "https://i.pravatar.cc/150?img=40", // Elon Musk
+    name: "Elon Musk",
+    userName: "@elonmusk",
+    comment: "Credora's innovative approach to project management is impressive. I appreciate their focus on both functionality and user experience. It’s rare to find a platform that balances power with usability, enabling teams to be more productive without sacrificing creativity. I believe that with tools like these, the future of collaboration is bright.",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe4",
-    comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud.",
+    image: "https://i.pravatar.cc/150?img=50", // Leonardo DiCaprio
+    name: "Leonardo DiCaprio",
+    userName: "@LeoDiCaprio",
+    comment: "I've tried many platforms, but none compare to Credora's efficiency. It's not just a tool; it's a complete ecosystem for success.",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe5",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "https://i.pravatar.cc/150?img=60", // Jennifer Lawrence
+    name: "Jennifer Lawrence",
+    userName: "@jlawrence",
+    comment: "Credora has really stepped up my productivity. The features are intuitive, and I love how responsive the team is to feedback. It feels like a partnership!",
   },
 ];
 
@@ -60,12 +55,11 @@ export const Testimonials = () => {
           {" "}
           People Love{" "}
         </span>
-        This Landing Page
+        Credora
       </h2>
 
       <p className="text-xl text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non unde error
-        facere hic reiciendis illo
+        Hear what our users and partners have to say about their experience with us.
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2 lg:columns-3 lg:gap-6 mx-auto space-y-4 lg:space-y-6">
@@ -76,8 +70,8 @@ export const Testimonials = () => {
           >
             <CardHeader className="flex flex-row items-center gap-4 pb-2">
               <Avatar>
-                <AvatarImage alt="" src={image} />
-                <AvatarFallback>OM</AvatarFallback>
+                <AvatarImage alt={name} src={image} />
+                <AvatarFallback>{name.charAt(0)}</AvatarFallback>
               </Avatar>
 
               <div className="flex flex-col">
@@ -86,7 +80,9 @@ export const Testimonials = () => {
               </div>
             </CardHeader>
 
-            <CardContent>{comment}</CardContent>
+            <CardContent className="text-lg">
+              {comment}
+            </CardContent>
           </Card>
         ))}
       </div>
