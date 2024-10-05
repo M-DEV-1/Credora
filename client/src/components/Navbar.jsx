@@ -120,11 +120,11 @@ const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="#" // Update with the actual sign-in link
-              target="_blank"
+              href="/certificate-home" // Update with the actual sign-in link
+              target=""
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              Sign In
+              Certificates
             </a>
           </div>
         </NavigationMenuList>
