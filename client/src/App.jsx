@@ -1,30 +1,38 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import CertificateForm from './components/CertificateForm';
-import CertificateList from './components/CertificateList';
-
-function App({ web3, contract, account }) {
-    return (
-        <Router>
-            <div className="container mx-auto p-4">
-                <nav>
-                    <ul className="flex space-x-4 mb-4">
-                        <li>
-                            <Link to="/issue" className="text-blue-500">Issue Certificate</Link>
-                        </li>
-                        <li>
-                            <Link to="/list" className="text-blue-500">View Certificates</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <Routes>
-                    <Route path="/issue" element={<CertificateForm web3={web3} contract={contract} account={account} />} />
-                    <Route path="/list" element={<CertificateList web3={web3} contract={contract} account={account} />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+import { About } from "./components/About";
+import { Cta } from "./components/Cta";
+import { FAQ } from "./components/FAQ";
+import { Features } from "./components/Features";
+import { Footer } from "./components/Footer";
+import { Hero } from "./components/Hero";
+import { HowItWorks } from "./components/HowItWorks";
+import { Navbar } from "./components/Navbar";
+import { Newsletter } from "./components/Newsletter";
+import { Pricing } from "./components/Pricing";
+import { ScrollToTop } from "./components/ScrollToTop";
+import { Services } from "./components/Services";
+import { Team } from "./components/Team";
+import { Testimonials } from "./components/Testimonials";
+import "./App.css";
+// import "./index.css";
+ 
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <HowItWorks />
+      <Features />
+      <Services />
+      <Cta />
+      <Testimonials />
+      <Team />
+      <Pricing />
+      <Newsletter />
+      <FAQ />
+      <Footer />
+      <ScrollToTop />
+    </>
+  );
 }
-
 export default App;
