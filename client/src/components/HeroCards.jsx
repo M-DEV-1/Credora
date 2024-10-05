@@ -147,7 +147,7 @@ export const HeroCards = () => {
 
         <CardFooter className="flex">
           <div className="space-y-4">
-            {["4 Team members", "5 GB off-chain Storage", "Unlimited certificates"].map(
+            {["5 Team members", "1 GB off-chain Storage", "Unlimited certificates"].map(
               (benefit) => (
                 <span key={benefit} className="flex items-center">
                   <Check className="text-green-500" />
