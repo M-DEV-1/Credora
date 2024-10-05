@@ -1,37 +1,19 @@
 import { Navbar } from "../components/Navbar.jsx";
 import { Button } from "../components/ui/button";
-import React from 'react';
-export const CertificateHome = () => {
-  return(
-    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
-      <div className="text-center lg:text-start space-y-6">
-        <main className="text-5xl md:text-6xl font-bold">
-          <h1 className="inline">
-            <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              Credora
-            </span>{" "}
-            - A Decentralised
-          </h1>{" "}
-          Certificate{" "}
-          <h2 className="inline">
-            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-              Verification
-            </span>{" "}
-            System
-          </h2>
-        </main>
+import React from "react";
+// import { Link } from "react-router-dom"; // Import Link
 
-        <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Issue and verify your certificates securely and efficiently!
-        </p>
-
-        <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 hover:text-primary border-spacing-2 hover:bg-white hover:border border-primary">Get Started</Button>
+function CertificateHome()  {
+  return (
+    <>
+      <Navbar />
+      <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+        <div className="text-center lg:text-start space-y-6">
+          Hello World ur mom easy fat ugly t
         </div>
-      </div>
-
-      {/* Shadow effect */}
-      <div className="shadow"></div>
-    </section>
-  )
+      </section>
+    </>
+  );
 };
+
+export default CertificateHome;
