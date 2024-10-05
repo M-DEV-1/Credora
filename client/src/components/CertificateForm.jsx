@@ -1,16 +1,29 @@
-// src/components/CertificateForm.js
-import React, { useState } from 'react';
-import { uploadToIPFS } from './ipfs';
-import { issueCertificate } from './web3';
+// src/components/CertificateForm.jsx
+import React, { useEffect, useState } from 'react';
+import getWeb3 from '../utils/web3';
+import { uploadToIPFS } from '../utils/ipfs'; // Ensure this path is correct
+import { issueCertificate } from '../utils/contractHelper'; // Ensure this is the correct import
 
-const CertificateForm = ({ web3, contract, account }) => {
+const CertificateForm = ({ contract }) => {
+    const [account, setAccount] = useState('');
     const [formData, setFormData] = useState({
         recipientAddress: '',
         issuerName: '',
         recipientName: '',
         reason: '',
-        certificateFile: null
+        certificateFile: null,
     });
+
+    // Connect to MetaMask and set the current account
+    useEffect(() => {
+        const initWeb3 = async () => {
+            const web3 = await getWeb3();
+            const accounts = await web3.eth.getAccounts();
+            setAccount(accounts[0]); // Set the connected account
+        };
+
+        initWeb3();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +37,7 @@ const CertificateForm = ({ web3, contract, account }) => {
                 certHash: ipfsHash,
                 issuerName: formData.issuerName,
                 recipientName: formData.recipientName,
-                reason: formData.reason
+                reason: formData.reason,
             });
             
             alert('Certificate issued successfully!');
@@ -43,8 +56,9 @@ const CertificateForm = ({ web3, contract, account }) => {
                     value={formData.recipientAddress}
                     onChange={(e) => setFormData({
                         ...formData,
-                        recipientAddress: e.target.value
+                        recipientAddress: e.target.value,
                     })}
+                    required
                 />
             </div>
             <div>
@@ -54,8 +68,9 @@ const CertificateForm = ({ web3, contract, account }) => {
                     value={formData.issuerName}
                     onChange={(e) => setFormData({
                         ...formData,
-                        issuerName: e.target.value
+                        issuerName: e.target.value,
                     })}
+                    required
                 />
             </div>
             <div>
@@ -65,8 +80,9 @@ const CertificateForm = ({ web3, contract, account }) => {
                     value={formData.recipientName}
                     onChange={(e) => setFormData({
                         ...formData,
-                        recipientName: e.target.value
+                        recipientName: e.target.value,
                     })}
+                    required
                 />
             </div>
             <div>
@@ -76,8 +92,9 @@ const CertificateForm = ({ web3, contract, account }) => {
                     value={formData.reason}
                     onChange={(e) => setFormData({
                         ...formData,
-                        reason: e.target.value
+                        reason: e.target.value,
                     })}
+                    required
                 />
             </div>
             <div>
@@ -86,8 +103,9 @@ const CertificateForm = ({ web3, contract, account }) => {
                     type="file"
                     onChange={(e) => setFormData({
                         ...formData,
-                        certificateFile: e.target.files[0]
+                        certificateFile: e.target.files[0],
                     })}
+                    required
                 />
             </div>
             <button type="submit">Issue Certificate</button>
