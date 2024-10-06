@@ -48,6 +48,23 @@ const CertificateForm = ({ contract }) => {
     };
 
     return (
+        <section>
+            <div className="area">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Recipient Address:</label>
@@ -110,6 +127,7 @@ const CertificateForm = ({ contract }) => {
             </div>
             <button type="submit">Issue Certificate</button>
         </form>
+        </section>
     );
 };
 

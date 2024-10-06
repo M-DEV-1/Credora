@@ -17,9 +17,11 @@ import withMetaMask from "./hoc/withMetaMask";
 
 function App() {
   return (
+    <section>
     <AccountProvider> {/* Wrap everything with AccountProvider */}
       <Router>
         <Navbar/>
+    
         <Routes>
           <Route path="/" element={<LandingPage/>} />
           <Route path="/certificate/home" element={<CertificateHome />} />
@@ -34,6 +36,7 @@ function App() {
         <ScrollToTop/>
       </Router>
     </AccountProvider>
+    </section>
   );
 }
 

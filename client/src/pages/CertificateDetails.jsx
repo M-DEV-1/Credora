@@ -86,6 +86,22 @@ function CertificateDetails({ web3, account, error }) {
 
   return (
     <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
+      <div className="area">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
       {/* Display error message */}
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="text-center">
@@ -98,7 +114,7 @@ function CertificateDetails({ web3, account, error }) {
       </div>
 
       {/* Certificate Box */}
-      <div className="flex justify-center py-20 bg-gray-100">
+      <div className="flex justify-center py-20">
         <div className="flex flex-col items-center w-full max-w-2xl pt-10 pb-10 px-20 rounded-lg shadow-lg bg-white">
           <hr className="w-full border-t-2 border-gray-300 mb-4" />{" "}
           {/* Top line */}
