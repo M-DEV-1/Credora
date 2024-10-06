@@ -48,13 +48,16 @@ function CertificateAdd({ web3, account, error }) {
         <div className="text-center">
           {/* Form to capture certificate details */}
           <form onSubmit={handleSubmit} className="flex flex-col items-center">
+            <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
+              Institute Name
+            </p>
             <input
               type="text"
               id="instituteName"
               value={instituteName || ""} // Set value from passed state, default to empty if not provided
               readOnly // Make the input read-only
               placeholder="Institute Name*"
-              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100" // Add margin bottom for spacing
+              className="border rounded h-12 w-[500px] p-3" // Add margin bottom for spacing
               required
             />
 
@@ -72,19 +75,27 @@ function CertificateAdd({ web3, account, error }) {
               required
             />
 
-            {/* Other form fields */}
+            {/* Label and input for Recipient Name */}
+            <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
+              Recipient Name
+            </p>
             <input
               type="text"
               id="recipientName"
               placeholder="Recipient Name*"
-              className="border rounded mt-4 h-12 w-[500px] p-3"
+              className="border rounded  h-12 w-[500px] p-3"
               required
             />
+
+            {/* Label and input for Recipient Address */}
+            <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
+              Recipient Address
+            </p>
             <input
               type="text"
               id="recipientAddress"
               placeholder="Recipient Address*"
-              className="border rounded mt-4 h-12 w-[500px] p-3"
+              className="border rounded h-12 w-[500px] p-3"
               required
             />
 
