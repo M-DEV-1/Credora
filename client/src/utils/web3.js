@@ -10,20 +10,23 @@ const getWeb3 = () => {
             if (window.ethereum) {
                 const web3 = new Web3(window.ethereum);
                 try {
-                    // Request account access if needed
+                  // Check if the user has already given permission
+                  const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        
+                  // If there are no accounts, request permission to access accounts
+                  if (accounts.length === 0) {
                     await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    // Accounts now exposed
-                    resolve(web3);
+                  }
+        
+                  resolve(web3);
                 } catch (error) {
-                    reject(error);
+                  reject(error);
                 }
-            }
-            // Non-dapp browsers...
-            else {
+              } else {
                 reject('Please install MetaMask!');
-            }
-        });
-    });
-};
-
-export default getWeb3;
+              }
+            });
+          });
+        };
+        
+        export default getWeb3;
