@@ -141,7 +141,7 @@ export const HeroCards = () => {
         </CardHeader>
 
         <CardContent>
-          <Link to="/certificate-home">
+          <Link to="/certificate/home">
           <Button className="w-full">Start Free Trial</Button>
           </Link>
         </CardContent>

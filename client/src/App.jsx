@@ -4,9 +4,14 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import LandingPage from "./pages/LandingPage";
 import CertificateHome from "./pages/CertificateHome";
-import withMetaMask from "./hoc/withMetaMask";
+import CertificateView from "./pages/CertificateView";
+import CertificateIssue from "./pages/CertificateIssue";
+import IssuedCertificates from "./pages/IssuedCertificates";
+import CertificateDetails from './pages/CertificateDetails'; 
 import "./App.css";
 import "./index.css";
+import withMetaMask from "./hoc/withMetaMask";
+
 
 function App() {
   return (
@@ -15,7 +20,11 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
-          <Route path="/certificate-home" element={<CertificateHome/>} />
+          <Route path="/certificate/home" element={<CertificateHome />} />
+          <Route path="/certificate/view" element={<CertificateView />} />
+          <Route path="/certificate/issue" element={<CertificateIssue />} />
+          <Route path="/certificate/issued" element={<IssuedCertificates />} />
+          <Route path="/certificate/view/:id" element={<CertificateDetails />} />
         </Routes>
         <Footer/>
         <ScrollToTop/>
@@ -37,7 +46,7 @@ export default App;
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/certificate-home" element={<CertificateHome />} />
+        <Route path="/certificate/home" element={<CertificateHome />} />
       </Routes>
       <Footer />
       <ScrollToTop />

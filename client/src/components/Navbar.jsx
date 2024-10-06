@@ -16,6 +16,8 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { LogoIcon } from "./Icons";
+import {Link} from 'react-router-dom'
+import { Button } from "../components/ui/button";
 
 // Route list for the navigation
 const routeList = [
@@ -118,14 +120,9 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <a
-              rel="noreferrer noopener"
-              href="/certificate-home" // Update with the actual sign-in link
-              target=""
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              Certificates
-            </a>
+          <Link to="/certificate/issue">
+            <Button variant="outline">Certificates</Button>
+          </Link>
           </div>
         </NavigationMenuList>
       </NavigationMenu>
