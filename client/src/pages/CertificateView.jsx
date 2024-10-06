@@ -42,30 +42,47 @@ function CertificateView({ web3, account, error }) {
   };
 
   return (
-    <section className="container place-items-center gap-10 py-16 md:py-20">
-      <div className="text-center">
+    <div className="app-container flex flex-col min-h-screen">
+      <section className="container flex-grow place-items-center gap-10 py-16 md:py-20">
+        {/* <div className="area">
+          <ul className="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div> */}
+        <div className="text-center">
 
-        {/* Display error message */}
-        {error && <p className="text-red-500">{error}</p>}
+          {/* Display error message */}
+          {error && <p className="text-red-500">{error}</p>}
 
-        <main className="text-5xl md:text-6xl font-bold">
-          <h1 className="inline">
-            View{" "}
-            <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              Certificates
+          <main className="text-5xl md:text-6xl font-bold">
+            <h1 className="inline">
+              View{" "}
+              <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
+                Certificates
+              </span>
+            </h1>
+          </main>
+          <p className="text-xl text-muted-foreground mx-auto lg:mx-0 py-4">
+            View certificates{" "}
+            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
+              securely
+            </span>{" "}
+            and{" "}
+            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
+              efficiently!
             </span>
-          </h1>
-        </main>
-        <p className="text-xl text-muted-foreground mx-auto lg:mx-0 py-4">
-          View certificates{" "}
-          <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-            securely
-          </span>{" "}
-          and{" "}
-          <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-            efficiently!
-          </span>
-        </p>
+          </p>
 
         {/* Form to capture the certificate ID */}
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
@@ -87,14 +104,18 @@ function CertificateView({ web3, account, error }) {
           </p>
         </div>
 
-        {/* Display connected account */}
-        {account ? (
-          <p className="text-green-500 text-center mt-5"> <strong className="text-green-600">Connected Account:</strong> {account} </p>
-        ) : (
-          !error && <p className="text-gray-500 mt-5"> Connecting to MetaMask...</p>
-        )}
-      </div>
-    </section>
+          {/* Display connected account */}
+          {account ? (
+            <p className="text-green-500 text-center mt-5"> <strong className="text-green-600">Connected Account:</strong> {account} </p>
+          ) : (
+            !error && <p className="text-gray-500 mt-5"> Connecting to MetaMask...</p>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
+      
+    </div>
   );
 }
 

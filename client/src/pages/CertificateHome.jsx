@@ -7,6 +7,7 @@ function CertificateHome({ web3, account, error }) {
   console.log("CertificateHome Props:", { web3, account, error });
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
+        
       <div className="text-center">
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
