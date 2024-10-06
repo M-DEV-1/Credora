@@ -1,8 +1,10 @@
 import { Button } from "../components/ui/button";
 import React from "react";
 import { Link } from "react-router-dom";
+import withMetaMask from "../hoc/withMetaMask";
 
-function CertificateHome() {
+function CertificateHome({ web3, account, error }) { 
+  console.log("CertificateHome Props:", { web3, account, error });
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
       <div className="text-center">
@@ -24,7 +26,17 @@ function CertificateHome() {
             efficiently!
           </span>
         </p>
-        {/* <div className="shadow"></div> */}
+
+        {/* Display error message */}
+        {error && <p className="text-red-500">{error}</p>}
+         
+        {/* Display connected account */}
+        {account ? (
+          <p className="text-green-500"> Connected Account: {account} </p>
+        ) : (
+          !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
+        )}
+            {/* <div className="shadow"></div> */}
         <div className="py-12 flex justify-center space-x-10">
           {" "}
           {/* Changed this line */}
@@ -33,11 +45,11 @@ function CertificateHome() {
           </Link>
           <Link to="/certificate/issue">
             <Button>Issue Certificates</Button>
-          </Link>
+          </Link>      
         </div>
       </div>
     </section>
   );
 }
 
-export default CertificateHome;
+export default withMetaMask(CertificateHome);

@@ -6,13 +6,15 @@ import LandingPage from "./pages/LandingPage";
 import CertificateHome from "./pages/CertificateHome";
 import CertificateView from "./pages/CertificateView";
 import CertificateIssue from "./pages/CertificateIssue";
-import "./App.css";
-import "./index.css";
 import IssuedCertificates from "./pages/IssuedCertificates";
 import CertificateDetails from './pages/CertificateDetails'; 
+import "./App.css";
+import "./index.css";
+import withMetaMask from "./hoc/withMetaMask";
 
 
 function App() {
+  const CertificateHomeWithMetaMask = withMetaMask(CertificateHome);
   return (
     <>
       <Router>

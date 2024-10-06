@@ -85,8 +85,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -145,8 +144,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -159,8 +157,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -179,8 +176,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -279,8 +275,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -359,8 +354,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -431,8 +425,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"issuedTo\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"certHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"issuerName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"issuedToName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"}],\"name\":\"CertificateIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"}],\"name\":\"CertificateRevoked\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"certificateExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"certificates\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"certHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"issuerName\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"issuedTo\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"issuedToName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issuedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"getCertificates\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"certHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"issuerName\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"issuedTo\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"issuedToName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issuedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"}],\"internalType\":\"struct Certificate.CertificateData[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_certHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_issuerName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_issuedToName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_reason\",\"type\":\"string\"}],\"name\":\"issueCertificate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"issuer\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_uniqueID\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"_reason\",\"type\":\"string\"}],\"name\":\"revokeCertificate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"revokedCertificates\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_uniqueID\",\"type\":\"bytes32\"}],\"name\":\"verifyCertificate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"certHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"issuerName\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"issuedTo\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"issuedToName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issuedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"}],\"internalType\":\"struct Certificate.CertificateData\",\"name\":\"certData\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_certHash\",\"type\":\"string\"}],\"name\":\"verifyCertificateByHash\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"certHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"issuerName\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"issuedTo\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"issuedToName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issuedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"uniqueID\",\"type\":\"bytes32\"}],\"internalType\":\"struct Certificate.CertificateData\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Certificate.sol\":\"Certificate\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Certificate.sol\":{\"keccak256\":\"0x7cecc5ac039e757c2065f977f719e9f70da78b33a667d2b4fddb3653e16dca7b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c2bd4a5ff50fc854d1587ff0ad48ff3a6207141e874fb32cd4fc58a4d94647c0\",\"dweb:/ipfs/QmNqTcj5E9exWTAmdPJgb6VDPFzFf5ENozvxEvbQi7eFaN\"]}},\"version\":1}",
@@ -17303,17 +17296,9 @@
     "name": "solc",
     "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x3F3F0baeAD84e41ca01f37Dfb89BDb45f1Ae0cBe",
-      "transactionHash": "0x8e2ea51d32bcf2b6fcaea67a0426fc31db9aaa1965cff240f674a14a2be3921e"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-04T22:34:36.501Z",
-  "networkType": "ethereum",
+  "updatedAt": "2024-10-06T17:10:02.092Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
