@@ -38,10 +38,13 @@ function CertificateRevoke({ web3, account, error }) {
         try {
             setLoading(true);
             setStatus("");
-
-            //call the revokeCertificate function from the contract 
-            const tx = await contract.methods.revokeCertificate(certificateID, "Certificate revoked by institution.").send({ from: account });
-
+    
+            // Convert the string certificateID to bytes32
+            const uniqueID = web3.utils.keccak256(certificateID);
+    
+            // Call the revokeCertificate function from the contract 
+            const tx = await contract.methods.revokeCertificate(uniqueID, "Certificate revoked by institution.").send({ from: account });
+    
             console.log("Transaction for Revoke: ", tx);
             setStatus(`Certificate successfully revoked! Transaction Hash: ${tx.transactionHash}`);
         } catch (err) {
@@ -51,7 +54,7 @@ function CertificateRevoke({ web3, account, error }) {
             setLoading(false);
         }
     };
-
+    
     return (
         <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
             <div className="text-center">

@@ -2,6 +2,7 @@ import { Button } from "../components/ui/button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import withMetaMask from "../hoc/withMetaMask";
+import loadContract from "../utils/loadContract"; 
 
 function CertificateView({ web3, account, error }) {
   console.log("CertificateView Props:", { web3, account, error });
@@ -12,13 +13,31 @@ function CertificateView({ web3, account, error }) {
     setInputValue(event.target.value); // Update input value
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission 
     // Navigate to the CertificateDetails route with the inputValue as the ID
     if (inputValue.trim()) {
-      navigate(`/certificate/view/${inputValue}`);
+      const uniqueID = web3.utils.keccak256(inputValue); // Generate bytes32 from the certificate ID
+      // Check if certificate exists
+      const exists = await checkCertificateExists(uniqueID);
+      if (exists) {
+        navigate(`/certificate/details/${inputValue}`); // Redirect to CertificateDetails
+      } else {
+        alert("Certificate ID does not exist. Please enter a valid certificate ID.");
+      }
     } else {
       alert("Please enter a valid certificate ID");
+    }
+  };
+
+  const checkCertificateExists = async (uniqueID) => {
+    try {
+      const contract = await loadContract(web3, account); // Load contract
+      const exists = await contract.certificateExists(uniqueID); // Assumes `certificateExists` checks existence
+      return exists;
+    } catch (err) {
+      console.error("Error checking certificate existence: ", err);
+      return false; // If there's an error, assume the certificate doesn't exist
     }
   };
 
@@ -56,7 +75,7 @@ function CertificateView({ web3, account, error }) {
             value={inputValue}
             onChange={handleChange}
             placeholder="Certificate ID"
-            className="border rounded mt-12 h-12  w-[570px] p-3"
+            className="border rounded mt-12 h-12 w-[570px] p-3"
           />
           <div className="py-8 flex justify-center space-x-10">
             <Button className="w-40" type="submit">Submit</Button>
