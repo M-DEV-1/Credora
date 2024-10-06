@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 
-
 function CertificateDetails() {
   const { id } = useParams(); // Get the certificate ID from the URL
   const navigate = useNavigate();
@@ -60,28 +59,45 @@ function CertificateDetails() {
   }
 
   return (
-    <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
+    <section className="container place-items-center gap-10 py-4 md:py-4 mb-4">
       <div className="text-center">
         {certificateExists && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
+          <div className="bg-green-100  text-green-700 mt-5 px-4 py-3 rounded relative mb-8">
             <strong className="font-bold">Success! </strong>
             <span className="block sm:inline">{alertMessage}</span>
           </div>
         )}
-        <main className="text-3xl mb-16 md:text-3xl font-bold text-center">
-          <h1>{certificate.name}</h1>
-          <p>Issued on: {certificate.issued}</p>
-          <p>{certificate.details}</p>
-        </main>
-        <div className="py-12 flex justify-center space-x-8">
-          <Button onClick={() => navigate(-1)}>Go Back</Button>
-          {/* Show the button only if it's not a new tab */}
-          {showNewTabButton && (
-            <Button variant="outline" onClick={handleViewInNewTab}>
-              View in New Tab
-            </Button>
-          )}
+      </div>
+
+      {/* Certificate Box */}
+      <div className="flex justify-center py-20 bg-gray-100">
+        <div className="flex flex-col items-center w-full max-w-xl pt-10 pb-10 px-20 rounded-lg shadow-lg bg-white">
+          <hr className="w-full border-t-2 border-gray-300 mb-4" />{" "}
+          {/* Top line */}
+          <h2 className="text-2xl font-bold mb-4">Certificate Details</h2>
+          <p className="text-lg mb-2">
+            <span className="font-semibold">Certificate ID:</span> {id}
+          </p>
+          <p className="text-lg mb-2">
+            <span className="font-semibold">Name:</span> {certificate.name}
+          </p>
+          <p className="text-lg mb-4">
+            <span className="font-semibold">Issued On:</span>{" "}
+            {certificate.issued}
+          </p>
+          <hr className="w-full border-t-2 border-gray-300 mt-3" />{" "}
+          {/* Bottom line */}
         </div>
+      </div>
+
+      <div className="py-12 flex justify-center space-x-8">
+        <Button className="w-40" onClick={() => navigate(-1)}>Go Back</Button>
+        {/* Show the button only if it's not a new tab */}
+        {showNewTabButton && (
+          <Button className="w-40" variant="outline" onClick={handleViewInNewTab}>
+            View in New Tab
+          </Button>
+        )}
       </div>
     </section>
   );
