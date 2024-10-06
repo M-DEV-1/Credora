@@ -69,10 +69,10 @@ function CertificateAdd({ web3, account, error }) {
             <input
               type="text"
               id="instituteName"
-              value={instituteName || ""} // Set value from passed state, default to empty if not provided
-              readOnly // Make the input read-only
+              // value={instituteName || ""} // Set value from passed state, default to empty if not provided
+              // readOnly // Make the input read-only
               placeholder="Institute Name*"
-              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
+              className="border rounded h-12 w-[500px] p-3"
               required
             />
 
@@ -85,8 +85,9 @@ function CertificateAdd({ web3, account, error }) {
               id="enteredAddress"
               value={enteredAddress} // Link state to input value
               onChange={(e) => setEnteredAddress(e.target.value)} // Update state on input change
-              placeholder="Enter Institute Account Address*"
-              className="border rounded h-12 w-[500px] p-3"
+              placeholder={account}
+              readOnly
+              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
               required
             />
 

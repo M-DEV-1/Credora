@@ -12,7 +12,7 @@ function CertificateIssue({ web3, account, error }) {
     event.preventDefault(); // Prevent default form submission
 
     // Navigate to CertificateAdd with the institute name
-    navigate("/certificate/add", { state: { instituteName } });
+    navigate("/certificate/issued", { state: { instituteName } });
   };
 
   return (
