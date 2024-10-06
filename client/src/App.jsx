@@ -9,14 +9,13 @@ import "./App.css";
 import "./index.css";
 
 function App() {
-  const CertificateHomeWithMetaMask = withMetaMask(CertificateHome);
   return (
     <>
       <Router>
         <Navbar/>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
-          <Route path="/certificate-home" element={<CertificateHomeWithMetaMask />} />
+          <Route path="/certificate-home" element={<CertificateHome/>} />
         </Routes>
         <Footer/>
         <ScrollToTop/>
