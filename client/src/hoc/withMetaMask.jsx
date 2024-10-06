@@ -61,7 +61,12 @@ const withMetaMask = (WrappedComponent) => {
 
     // Render loading message
     if (loading) {
-      return <div className="text-gray-500 text-center">Connecting to MetaMask...</div>;
+      return (
+        <div className="text-gray-500 text-2xl font-semibold font-mono text-center md:mt-16 md:mb-16 mt-16 mb-16">
+          <p>Connecting to MetaMask...</p>
+          <img src={metamaskError} alt="Metamask Error" className="mt-12 w-full h-auto object-contain px-24 md:h-[500px]" />
+        </div>
+      );
     }
 
     // Render error message if any
@@ -69,7 +74,7 @@ const withMetaMask = (WrappedComponent) => {
       return (
         <div className="text-red-500 text-2xl font-semibold font-mono text-center md:mt-16 md:mb-16 mt-16 mb-16">
           <p>{error}</p>
-          <img src={metamaskError} alt="Metamask Error" className="mt-12 w-full h-auto object-contain px-24 md:h-[500px]"/>
+          <img src={metamaskError} alt="Metamask Error" className="mt-12 w-full h-auto object-contain px-24 md:h-[500px]" />
         </div>
       );
     }
