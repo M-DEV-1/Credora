@@ -49,7 +49,7 @@ const CertificateForm = ({ contract }) => {
 
     return (
         <section>
-            <div className="area">
+            {/* <div className="area">
         <ul className="circles">
           <li></li>
           <li></li>
@@ -64,7 +64,7 @@ const CertificateForm = ({ contract }) => {
           <li></li>
           <li></li>
         </ul>
-      </div>
+      </div> */}
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Recipient Address:</label>

@@ -34,7 +34,7 @@ function CertificateAdd({ web3, account, error }) {
   return (
     
     <section className="container place-items-center gap-10 py-16 md:py-12 mb-0">
-        <div className="area">
+        {/* <div className="area">
 			<ul className="circles">
 				<li></li>
 				<li></li>
@@ -47,7 +47,7 @@ function CertificateAdd({ web3, account, error }) {
 				<li></li>
 				<li></li>
 			</ul>
-		</div>
+		</div> */}
       <div className="text-center">
         <main className="text-5xl mb-6 md:text-6xl font-bold">
           <h1 className="inline">

@@ -17,7 +17,7 @@ function CertificateIssue({ web3, account, error }) {
 
   return (
     <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
-      <div className="area">
+      {/* <div className="area">
         <ul className="circles">
           <li></li>
           <li></li>
@@ -32,7 +32,7 @@ function CertificateIssue({ web3, account, error }) {
           <li></li>
           <li></li>
         </ul>
-      </div>
+      </div> */}
       <div className="text-center">
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
