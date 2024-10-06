@@ -2,7 +2,7 @@ import { Button } from "../components/ui/button";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function CertificateHome() {
+function CertificateView() {
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
       <div className="text-center">
@@ -25,19 +25,15 @@ function CertificateHome() {
           </span>
         </p>
         {/* <div className="shadow"></div> */}
-        <div className="py-12 flex justify-center space-x-10">
-          {" "}
-          {/* Changed this line */}
-          <Link to="/certificate/view">
-            <Button>View Certificates</Button>
-          </Link>
-          <Link to="/certificate/issue">
-            <Button>Issue Certificates</Button>
-          </Link>
+        <div className="py-12 flex justify-center space-x-10"> {/* Changed this line */}
+          <Button>
+            View Certificates
+          </Button>
+         
         </div>
       </div>
     </section>
   );
 }
 
-export default CertificateHome;
+export default CertificateView;
