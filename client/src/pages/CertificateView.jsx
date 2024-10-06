@@ -1,17 +1,23 @@
 import { Button } from "../components/ui/button";
 import React, { useState } from "react"; // Import useState for managing state
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 
 function CertificateView() {
   const [inputValue, setInputValue] = useState(""); // State for the input field
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleChange = (event) => {
     setInputValue(event.target.value); // Update input value
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission 
-    alert(`Submitted value: ${inputValue}`); // Handle the input value (you can replace this with any logic)
+    event.preventDefault(); // Prevent default form submission
+    if (inputValue) {
+      // Navigate to the certificate details page with the input value
+      navigate(`/certificate/view/${inputValue}`);
+    } else {
+      alert("Please enter a valid Certificate ID");
+    }
   };
 
   return (
@@ -36,7 +42,6 @@ function CertificateView() {
           </span>
         </p>
 
-        {/* Wrap the input field and button inside a form */}
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             type="text"
@@ -44,15 +49,16 @@ function CertificateView() {
             value={inputValue}
             onChange={handleChange}
             placeholder="Certificate ID"
-            className="border rounded mt-12 h-12  w-[570px] p-3" // Add margin bottom for spacing
+            className="border rounded mt-12 h-12 w-[570px] p-3" // Add margin bottom for spacing
           />
           <div className="py-8 flex justify-center space-x-10">
             <Button className="w-40" type="submit">Submit</Button>
           </div>
         </form>
+
         <div className="py-3">
-            <p className="font-bold text-xl">This is what a Certificate Hash looks like </p>
-            <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
+          <p className="font-bold text-xl">This is what a Certificate Hash looks like:</p>
+          <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
         </div>
       </div>
     </section>
