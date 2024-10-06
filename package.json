@@ -18,10 +18,8 @@
     "@openzeppelin/contracts": "^4.8.0",
     "@truffle/contract": "^4.6.0",
     "babel-loader": "^9.1.2",
-    "dotenv": "^16.4.5",
     "ethers": "^5.7.2",
     "ganache-cli": "^6.12.2",
-    "ipfs-http-client": "^60.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.2",
@@ -30,5 +28,13 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
+  },
+  "devDependencies": {
+    "@openzeppelin/test-helpers": "^0.5.16",
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "chai": "^5.1.1",
+    "chai-as-promised": "^8.0.0",
+    "dotenv": "^16.4.5",
+    "ipfs-http-client": "^60.0.1"
   }
 }
