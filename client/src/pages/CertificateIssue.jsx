@@ -7,16 +7,7 @@ import withMetaMask from "../hoc/withMetaMask";
 
 function CertificateIssue({ web3, account, error }) {
   const [username, setUsername] = useState(""); // State for the username input
-  const [password, setPassword] = useState(""); // State for the password input
-  const correctPassword = "admin"; // Define the correct password for verification
   const navigate = useNavigate();
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value); // Update username value
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value); // Update password value
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission 
@@ -63,13 +54,14 @@ function CertificateIssue({ web3, account, error }) {
             className="border rounded mt-12 h-12 w-[500px] p-3" // Add margin bottom for spacing
             required
           />
+          <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">Institute Account Address</p>
           <input
             type="text"
             id="instituteID" // Updated id for username
-            // value={username} // Link state to input value
-            // onChange={handleUsernameChange} // Handle changes
+            value={account} // Set the default value to account
+            readOnly // Lock the input section
             placeholder="Institute Account Address*"
-            className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100" // Add margin bottom for spacing
             required
           />
           <input
