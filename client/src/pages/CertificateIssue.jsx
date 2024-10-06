@@ -83,7 +83,7 @@ function CertificateIssue({ web3, account, error }) {
             type="text"
             id="instituteAbbreviation"
             placeholder="Institute Abbreviation*"
-            className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            className="border rounded  h-12 w-[500px] p-3" // Add margin bottom for spacing
             required
           />
           <input
