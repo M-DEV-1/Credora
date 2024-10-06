@@ -2,7 +2,8 @@ import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import React from "react";
-
+import withMetaMask from "../hoc/withMetaMask";
+ 
 // Dummy data for demonstration purposes
 const certificates = [
   { id: 1, name: "Certificate of Completion - Course A" },
@@ -11,9 +12,13 @@ const certificates = [
   // Add more certificates as needed
 ];
 
-function IssuedCertificates() {
+function IssuedCertificates({ web3, account, error }) {
   return (
     <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
+
+      {/* Display error message */}
+      {error && <p className="text-red-500 text-center">{error}</p>}
+
       <div className="text-center">
         <main className="text-5xl mb-16 md:text-6xl font-bold">
           <h1 className="inline">
@@ -45,9 +50,15 @@ function IssuedCertificates() {
             <Button className="w-40"  variant="destructive">Revoke Certificate</Button>
           {/* </Link> */}
         </div>
+        {/* Display connected account */}
+        {account ? (
+          <p className="text-green-500 text-center"> <strong className="text-green-600">Connected Account:</strong> {account} </p>
+        ) : (
+          !error && <p className="text-gray-500 text-center"> Connecting to MetaMask...</p>
+        )}
     </section>
     
   );
 }
 
-export default IssuedCertificates;
+export default withMetaMask(IssuedCertificates);

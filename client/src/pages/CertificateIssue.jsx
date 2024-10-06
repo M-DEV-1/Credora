@@ -2,9 +2,10 @@ import { Button } from "../components/ui/button";
 import React, { useState } from "react"; // Import useState for managing state
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import withMetaMask from "../hoc/withMetaMask";
 
 
-function CertificateIssue() {
+function CertificateIssue({ web3, account, error }) {
   const [username, setUsername] = useState(""); // State for the username input
   const [password, setPassword] = useState(""); // State for the password input
   const correctPassword = "admin"; // Define the correct password for verification
@@ -22,8 +23,8 @@ function CertificateIssue() {
 
     // Verify password
     // if (password === correctPassword) {
-      // alert(`Welcome, ${username}!`); // Handle successful verification (you can replace this with any logic)
-      navigate("/certificate/issued");
+    // alert(`Welcome, ${username}!`); // Handle successful verification (you can replace this with any logic)
+    navigate("/certificate/issued");
     // } else {
     //   alert("Incorrect password. Please try again."); // Handle failed verification
     // }
@@ -55,27 +56,53 @@ function CertificateIssue() {
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             type="text"
-            id="usernameField" // Updated id for username
+            id="instituteName" // Updated id for username
             // value={username} // Link state to input value
             // onChange={handleUsernameChange} // Handle changes
-            placeholder="Institute URL"
+            placeholder="Institute Name*"
             className="border rounded mt-12 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            required
           />
           <input
-            type="password"
-            id="passwordField" // Updated id for password
-            // value={password} // Link state to input value
-            // onChange={handlePasswordChange} // Handle changes
-            placeholder="Password"
+            type="text"
+            id="instituteID" // Updated id for username
+            // value={username} // Link state to input value
+            // onChange={handleUsernameChange} // Handle changes
+            placeholder="Institute Account Address*"
             className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            required
+          />
+          <input
+            type="text"
+            id="institute" // Updated id for username
+            // value={username} // Link state to input value
+            // onChange={handleUsernameChange} // Handle changes
+            placeholder="Institute Abbreviation*"
+            className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            required
+          />
+          <input
+            type="text"
+            id="instituteLink" // Updated id for username
+            // value={username} // Link state to input value
+            // onChange={handleUsernameChange} // Handle changes
+            placeholder="Institute Website*"
+            className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
+            required
           />
           <div className="py-8 flex text-center items-center justify-center space-x-10">
             <Button className="w-40 p-6 text-lg" type="submit">Login</Button>
           </div>
+          {/* Display connected account */}
+          {account ? (
+            <p></p>
+          ) : (
+            !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
+          )}
         </form>
       </div>
     </section>
   );
 }
 
-export default CertificateIssue;
+export default withMetaMask(CertificateIssue);
