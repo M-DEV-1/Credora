@@ -120,7 +120,7 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-          <Link to="/certificate/issue">
+          <Link to="/certificate/institute">
             <Button variant="outline">Certificates</Button>
           </Link>
           </div>
