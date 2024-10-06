@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 
 
-function CertificateIssue() {
+function IssuedCertificates() {
   const [username, setUsername] = useState(""); // State for the username input
   const [password, setPassword] = useState(""); // State for the password input
   const correctPassword = "admin"; // Define the correct password for verification
@@ -51,31 +51,9 @@ function CertificateIssue() {
           </span>
         </p>
 
-        {/* Wrap the input field and button inside a form */}
-        <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <input
-            type="text"
-            id="usernameField" // Updated id for username
-            // value={username} // Link state to input value
-            // onChange={handleUsernameChange} // Handle changes
-            placeholder="Institute URL"
-            className="border rounded mt-12 h-12 w-[500px] p-3" // Add margin bottom for spacing
-          />
-          <input
-            type="password"
-            id="passwordField" // Updated id for password
-            // value={password} // Link state to input value
-            // onChange={handlePasswordChange} // Handle changes
-            placeholder="Password"
-            className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
-          />
-          <div className="py-8 flex text-center items-center justify-center space-x-10">
-            <Button className="w-40 p-6 text-lg" type="submit">Login</Button>
-          </div>
-        </form>
       </div>
     </section>
   );
 }
 
-export default CertificateIssue;
+export default IssuedCertificates;

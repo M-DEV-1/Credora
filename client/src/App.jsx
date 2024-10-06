@@ -8,6 +8,7 @@ import CertificateView from "./pages/CertificateView";
 import CertificateIssue from "./pages/CertificateIssue";
 import "./App.css";
 import "./index.css";
+import IssuedCertificates from "./pages/IssuedCertificates";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/certificate/home" element={<CertificateHome />} />
           <Route path="/certificate/view" element={<CertificateView />} />
           <Route path="/certificate/issue" element={<CertificateIssue />} />
+          <Route path="/certificate/issued" element={<IssuedCertificates />} />
         </Routes>
         <Footer/>
         <ScrollToTop/>
