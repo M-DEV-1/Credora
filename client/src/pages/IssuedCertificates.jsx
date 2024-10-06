@@ -6,9 +6,9 @@ import withMetaMask from "../hoc/withMetaMask";
  
 // Dummy data for demonstration purposes
 const certificates = [
-  { id: 1, name: "Certificate of Completion - Course A" },
-  { id: 2, name: "Certificate of Achievement - Course B" },
-  { id: 3, name: "Certificate of Excellence - Course C" },
+  { id: 1, name: "Certificate of Completion", certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"},
+  { id: 2, name: "Certificate of Achievement", certID: "9e7b6a5d1f2c8e4a3d5c1b7e8a3d2f4"},
+  { id: 3, name: "Certificate of Participation", certID: "5d3b1e2a4c9f8d6b2a7c3e5b9f1a4d8"},
   // Add more certificates as needed
 ];
 
@@ -30,14 +30,17 @@ function IssuedCertificates({ web3, account, error }) {
         </main>
 
         <div className="mt-10">
-          <h2 className="text-3xl font-semibold mb-4">Existing Certificates:</h2>
+          <h2 className="text-3xl font-semibold font-mono mb-4">Example Certificates:</h2>
+          <p>These certificates are not yet deployed; they are intended solely as examples.</p>
+          <br />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> {/* Grid layout for cards */}
             {certificates.map(cert => (
               <Link to={`/certificate/view/${cert.id}`} key={cert.id} className="no-underline">
                 <Card className="hover:scale-105 transition-transform duration-300 hover:border-primary hover:shadow-md hover:shadow-primary-foreground">
                   <CardHeader>
                     <CardTitle className="text-xl md:text-2xl">{cert.name}</CardTitle>
-                    <CardDescription className="text-md mt-2">Click to view details</CardDescription>
+                    <CardDescription className="text-md mt-2"><strong>Certificate ID:</strong> {cert.certID}</CardDescription>
+                    <CardDescription className="text-sm text-gray-400 mt-2">Click to view details</CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
