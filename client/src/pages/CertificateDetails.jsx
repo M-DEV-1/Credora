@@ -22,7 +22,20 @@ function CertificateDetails({ web3, account, error }) {
       nameto: "Elon Musk",
       certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1",
     },
-    // Add other demo certificates here
+    2: {
+      name: "Certificate of Achievement",
+      issued: "2024-02-01",
+      details: "Details about Certificate",
+      nameto: "John Yadav",  
+      certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"
+    },
+    3: {
+      name: "Certificate of Participation",
+      issued: "2024-03-01",
+      details: "Details about Certificate",
+      nameto: "Smith Choudhary",
+      certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"
+    },
   };
 
   const getDemoCertificate = (id) => {
