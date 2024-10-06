@@ -22,7 +22,7 @@ export const Cta = () => {
         </div>
 
         <div className="space-y-4 lg:col-start-2">
-          <Link to="/certificate-home">
+          <Link to="/certificate/home">
             <Button className="w-full md:mr-4 md:w-auto">
               Get Started Now
             </Button>
