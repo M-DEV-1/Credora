@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/certificate/home" element={<CertificateHome />} />
           <Route path="/certificate/view" element={<CertificateView />} />
-          <Route path="/certificate/issue" element={<CertificateIssue />} />
+          <Route path="/certificate/institute" element={<CertificateIssue />} />
           <Route path="/certificate/issued" element={<IssuedCertificates />} />
           <Route path="/certificate/view/:id" element={<CertificateDetails />} />
           <Route path="/certificate/revoke" element={<CertificateRevoke/>} />
