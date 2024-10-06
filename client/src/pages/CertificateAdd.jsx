@@ -57,7 +57,7 @@ function CertificateAdd({ web3, account, error }) {
               value={instituteName || ""} // Set value from passed state, default to empty if not provided
               readOnly // Make the input read-only
               placeholder="Institute Name*"
-              className="border rounded h-12 w-[500px] p-3" // Add margin bottom for spacing
+              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
               required
             />
 
