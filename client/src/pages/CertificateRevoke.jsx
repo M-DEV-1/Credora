@@ -1,23 +1,55 @@
 import { Button } from "../components/ui/button";
-import React, { useState } from "react"; // Import useState for managing state
+import React, { useState, useEffect } from "react"; // Import useState for managing state
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import withMetaMask from "../hoc/withMetaMask";
-import InputLabel from '@mui/material/InputLabel';
+import loadContract from "../utils/loadContract";
 
 function CertificateRevoke({ web3, account, error }) {
 
+    const [contract, setContract] = useState(null);
+    const [certificateID, setCertificateID] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
     const navigate = useNavigate();
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Prevent default form submission 
 
-        // Verify password
-        // if (password === correctPassword) {
-        // alert(`Welcome, ${username}!`); // Handle successful verification (you can replace this with any logic)
-        //navigate("/certificate/issued");
-        // } else {
-        //   alert("Incorrect password. Please try again."); // Handle failed verification
-        // }
+    useEffect(() => {
+        //Load the smart contract once the component is mounted
+        const loadSmartContract = async () => {
+            if (web3 && account) {
+                try {
+                    const contractInstance = await loadContract(web3, account);
+                    setContract(contractInstance);
+                } catch (err) {
+                    console.log("Failed to load contract:", err);
+                }
+            }
+        };
+
+        loadSmartContract();
+    }, [web3, account]);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Prevent default form submission 
+        if (!certificateID || !contract) {
+            alert("Please provide a valid Certificate ID and ensure the contract is loaded.");
+            return;
+        }
+        try {
+            setLoading(true);
+            setStatus("");
+
+            //call the revokeCertificate function from the contract 
+            const tx = await contract.methods.revokeCertificate(certificateID, "Certificate revoked by institution.").send({ from: account });
+
+            console.log("Transaction for Revoke: ", tx);
+            setStatus(`Certificate successfully revoked! Transaction Hash: ${tx.transactionHash}`);
+        } catch (err) {
+            console.log("Error revoking certificate:", err);
+            setStatus("Failed to revoke certificate. Make sure the certificate ID is correct");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -46,19 +78,15 @@ function CertificateRevoke({ web3, account, error }) {
                 <form onSubmit={handleSubmit} className="flex flex-col items-center">
                     <input
                         type="text"
-                        id="revokeID" // Updated id for username
-                        // value={username} // Link state to input value
+                        id="revokeID"
                         // onChange={handleUsernameChange} // Handle changes
+                        value={certificateID} //// Link state to input value
+                        onChange={(e) => setCertificateID(e.target.value)} // Handle changes
                         placeholder="Certificate ID*"
                         className="border rounded mt-12 h-12 w-[500px] p-3" // Add margin bottom for spacing
                         required
                     />
-                    {/* <InputLabel
-                        htmlFor="instituteID"
-                        className="mt-4 text-xs absolute left-0 text-gray-500"
-                    >
-                        Institute Account Address
-                    </InputLabel> */}
+
                     <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">Institute Account Address</p>
                     <input
                         type="text"
@@ -71,14 +99,20 @@ function CertificateRevoke({ web3, account, error }) {
                     />
 
                     <div className="py-8 flex text-center items-center justify-center space-x-10">
-                        <Button className="w-40 p-6" type="submit" variant="destructive">Revoke Certificate</Button>
+                        <Button className="w-40 p-6" type="submit" variant="destructive" disabled={loading}>
+                            {loading ? "Revoking..." : "Revoke Certificate"}
+                        </Button>
                     </div>
+
                     {/* Display connected account */}
                     {account ? (
                         <p></p>
                     ) : (
                         !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
                     )}
+
+                    {/* Feedback Status */}
+                    {status && <p className="text-center mt-4">{status}</p>}
                 </form>
             </div>
         </section>
