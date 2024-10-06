@@ -54,18 +54,18 @@ function CertificateAdd({ web3, account, error }) {
             />
 
             {/* Display MetaMask account address */}
-            <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
+            {/* <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
               Institute Account Address
             </p>
             <input
               type="text"
               id="instituteID"
               value={account} // Set value from MetaMask account
-            //   readOnly
+              readOnly
               placeholder="Institute Account Address*"
               className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
               required
-            />
+            /> */}
 
             {/* Field to enter the institute address for comparison */}
             <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
