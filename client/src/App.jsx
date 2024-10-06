@@ -40,7 +40,7 @@ export default App;
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/certificate-home" element={<CertificateHome />} />
+        <Route path="/certificate/home" element={<CertificateHome />} />
       </Routes>
       <Footer />
       <ScrollToTop />

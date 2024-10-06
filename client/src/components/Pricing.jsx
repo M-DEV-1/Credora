@@ -106,7 +106,7 @@ export const Pricing = () => {
             </CardHeader>
 
             <CardContent>
-            <Link to="/certificate-home">
+            <Link to="/certificate/home">
               <Button className="w-full">{pricing.buttonText}</Button>
             </Link>
             </CardContent>
