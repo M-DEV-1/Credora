@@ -93,7 +93,6 @@ function CertificateDetails({ web3, account, error }) {
 
   // Display certificate details if found
   return (
-
     <section className="container place-items-center gap-8 py-16 md:py-20 mb-4">
       <div className="text-center">
         {alertMessage && !isError && (
@@ -152,6 +151,6 @@ function CertificateDetails({ web3, account, error }) {
       )}
     </section>
   );
-};
+}
 
 export default withMetaMask(CertificateDetails);
