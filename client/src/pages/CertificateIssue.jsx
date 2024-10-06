@@ -8,9 +8,9 @@ function CertificateIssue() {
       <div className="text-center">
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
-            Welcome to{" "}
+            Issue your {" "}
             <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              Credora
+              Certificate
             </span>
           </h1>
         </main>
@@ -27,7 +27,6 @@ function CertificateIssue() {
         {/* <div className="shadow"></div> */}
         <div className="py-12 flex justify-center space-x-10">
           {" "}
-          Changed this line
           <Link to="/certificate/view">
             <Button>View Certificates</Button>
           </Link>

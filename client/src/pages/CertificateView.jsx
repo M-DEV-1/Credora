@@ -1,21 +1,32 @@
 import { Button } from "../components/ui/button";
-import React from "react";
+import React, { useState } from "react"; // Import useState for managing state
 import { Link } from "react-router-dom";
 
 function CertificateView() {
+  const [inputValue, setInputValue] = useState(""); // State for the input field
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value); // Update input value
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission 
+    alert(`Submitted value: ${inputValue}`); // Handle the input value (you can replace this with any logic)
+  };
+
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
       <div className="text-center">
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
-            Welcome to{" "}
+            View{" "}
             <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              Credora
+              Certificates
             </span>
           </h1>
         </main>
         <p className="text-xl text-muted-foreground mx-auto lg:mx-0 py-4">
-          Issue and verify your certificates{" "}
+          View certificates{" "}
           <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
             securely
           </span>{" "}
@@ -24,12 +35,24 @@ function CertificateView() {
             efficiently!
           </span>
         </p>
-        {/* <div className="shadow"></div> */}
-        <div className="py-12 flex justify-center space-x-10"> {/* Changed this line */}
-          <Button>
-            View Certificates
-          </Button>
-         
+
+        {/* Wrap the input field and button inside a form */}
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
+          <input
+            type="text"
+            id="inputField"
+            value={inputValue}
+            onChange={handleChange}
+            placeholder="Certificate ID"
+            className="border rounded mt-12 h-12  w-[570px] p-3" // Add margin bottom for spacing
+          />
+          <div className="py-8 flex justify-center space-x-10">
+            <Button className="w-40" type="submit">Submit</Button>
+          </div>
+        </form>
+        <div className="py-3">
+            <p className="font-bold text-xl">This is what a Certificate Hash looks like </p>
+            <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
         </div>
       </div>
     </section>
