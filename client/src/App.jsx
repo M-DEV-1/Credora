@@ -4,17 +4,19 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import LandingPage from "./pages/LandingPage";
 import CertificateHome from "./pages/CertificateHome";
+import withMetaMask from "./hoc/withMetaMask";
 import "./App.css";
 import "./index.css";
 
 function App() {
+  const CertificateHomeWithMetaMask = withMetaMask(CertificateHome);
   return (
     <>
       <Router>
         <Navbar/>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
-          <Route path="/certificate-home" element={<CertificateHome />} />
+          <Route path="/certificate-home" element={<CertificateHomeWithMetaMask />} />
         </Routes>
         <Footer/>
         <ScrollToTop/>
