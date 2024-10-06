@@ -10,7 +10,7 @@ const loadContract = async (web3, account, error) => {
   try {
     const contract = new web3.eth.Contract(abi, contractAddress, { from: account });
     return contract;
-  } catch (error) {
+  } catch (err) {
     console.error("Failed to load contract:", error);
     throw error;
   }
