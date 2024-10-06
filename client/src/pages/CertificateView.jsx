@@ -63,8 +63,9 @@ function CertificateView({ web3, account, error }) {
           </div>
         </form>
         <div className="py-3">
-          <p className="font-bold text-xl">This is what a Certificate Hash looks like </p>
-          <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
+          <p className="text-xl"><strong>Example Certificate ID:</strong>
+            <span className="mt-4"> a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1</span>
+          </p>
         </div>
 
         {/* Display connected account */}
