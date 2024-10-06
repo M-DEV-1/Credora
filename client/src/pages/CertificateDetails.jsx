@@ -17,20 +17,26 @@ function CertificateDetails({ web3, account, error }) {
   // Example certificate data - replace with a fetch call to your API
   const certificates = {
     1: {
-      name: "Certificate A",
+      name: "Certificate of Completion",
       issued: "2024-01-01",
-      details: "Details about Certificate A",
+      details: "Details about Certificate",
+      nameto: "Elon Musk",
+      certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"
     },
     2: {
-      name: "Certificate B",
+      name: "Certificate of Achievement",
       issued: "2024-02-01",
-      details: "Details about Certificate B",
+      details: "Details about Certificate",
+      nameto: "John Yadav",  
+      certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"
     },
-    3: { 
-       name: "Certificate of Excellence - Course C" ,
-       issued: "2024-03-01",
-       details: "Details about Certificate C",
-      },
+    3: {
+      name: "Certificate of Participation",
+      issued: "2024-03-01",
+      details: "Details about Certificate",
+      nameto: "Smith Choudhary",
+      certID: "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1"
+    },
   };
 
   const certificate = certificates[id];
@@ -93,12 +99,13 @@ function CertificateDetails({ web3, account, error }) {
 
       {/* Certificate Box */}
       <div className="flex justify-center py-20 bg-gray-100">
-        <div className="flex flex-col items-center w-full max-w-xl pt-10 pb-10 px-20 rounded-lg shadow-lg bg-white">
+        <div className="flex flex-col items-center w-full max-w-2xl pt-10 pb-10 px-20 rounded-lg shadow-lg bg-white">
           <hr className="w-full border-t-2 border-gray-300 mb-4" />{" "}
           {/* Top line */}
           <h2 className="text-2xl font-bold mb-4">Certificate Details</h2>
           <p className="text-lg mb-2">
-            <span className="font-semibold">Certificate ID:</span> {id}
+            <span className="font-semibold">Certificate ID: </span>
+          {certificate.certID}
           </p>
           <p className="text-lg mb-2">
             <span className="font-semibold">Name:</span> {certificate.name}
@@ -106,6 +113,10 @@ function CertificateDetails({ web3, account, error }) {
           <p className="text-lg mb-4">
             <span className="font-semibold">Issued On:</span>{" "}
             {certificate.issued}
+          </p>
+          <p className="text-lg mb-4">
+            <span className="font-semibold">Issued To:</span>{" "}
+            {certificate.nameto}
           </p>
           <hr className="w-full border-t-2 border-gray-300 mt-3" />{" "}
           {/* Bottom line */}
@@ -123,7 +134,7 @@ function CertificateDetails({ web3, account, error }) {
         )}
       </div>
 
-      <div className="py-12 flex justify-center space-x-8">
+      <div className="py-6 flex justify-center space-x-8">
         <Button className="w-40" onClick={() => navigate(-1)}>
           Go Back
         </Button>

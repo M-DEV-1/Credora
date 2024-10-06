@@ -44,7 +44,7 @@ function CertificateHome({ web3, account, error }) {
           <Link to="/certificate/view">
             <Button>View Certificates</Button>
           </Link>
-          <Link to="/certificate/issue">
+          <Link to="/certificate/institute">
             <Button>Issue Certificates</Button>
           </Link>
         </div>
