@@ -22,6 +22,11 @@ function CertificateDetails() {
       issued: "2024-02-01",
       details: "Details about Certificate B",
     },
+    3: { 
+       name: "Certificate of Excellence - Course C" ,
+       issued: "2024-03-01",
+       details: "Details about Certificate C",
+      },
   };
 
   const certificate = certificates[id];
@@ -30,7 +35,7 @@ function CertificateDetails() {
   useEffect(() => {
     if (certificate) {
       setCertificateExists(true);
-      setAlertMessage(`Certificate with ID ${id} exists!`);
+      setAlertMessage(`Certificate exists!`);
     } else {
       setCertificateExists(false);
     }
@@ -91,10 +96,16 @@ function CertificateDetails() {
       </div>
 
       <div className="py-12 flex justify-center space-x-8">
-        <Button className="w-40" onClick={() => navigate(-1)}>Go Back</Button>
+        <Button className="w-40" onClick={() => navigate(-1)}>
+          Go Back
+        </Button>
         {/* Show the button only if it's not a new tab */}
         {showNewTabButton && (
-          <Button className="w-40" variant="outline" onClick={handleViewInNewTab}>
+          <Button
+            className="w-40"
+            variant="outline"
+            onClick={handleViewInNewTab}
+          >
             View in New Tab
           </Button>
         )}
