@@ -1,8 +1,10 @@
 import { Button } from "../components/ui/button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import withMetaMask from "../hoc/withMetaMask";
 
-function CertificateView() {
+function CertificateView({ web3, account, error }) {
+  console.log("CertificateView Props:", { web3, account, error });
   const [inputValue, setInputValue] = useState(""); // State for the input field
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -23,6 +25,10 @@ function CertificateView() {
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
       <div className="text-center">
+
+        {/* Display error message */}
+        {error && <p className="text-red-500">{error}</p>}
+
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
             View{" "}
@@ -60,9 +66,16 @@ function CertificateView() {
           <p className="font-bold text-xl">This is what a Certificate Hash looks like </p>
           <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
         </div>
+
+        {/* Display connected account */}
+        {account ? (
+          <p className="text-green-500 text-center mt-5"> <strong className="text-green-600">Connected Account:</strong> {account} </p>
+        ) : (
+          !error && <p className="text-gray-500 mt-5"> Connecting to MetaMask...</p>
+        )}
       </div>
     </section>
   );
 }
 
-export default CertificateView;
+export default withMetaMask(CertificateView);

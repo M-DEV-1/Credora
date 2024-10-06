@@ -7,14 +7,14 @@ import CertificateHome from "./pages/CertificateHome";
 import CertificateView from "./pages/CertificateView";
 import CertificateIssue from "./pages/CertificateIssue";
 import IssuedCertificates from "./pages/IssuedCertificates";
-import CertificateDetails from './pages/CertificateDetails'; 
+import CertificateDetails from "./pages/CertificateDetails"; 
+import CertificateRevoke from "./pages/CertificateRevoke"
 import "./App.css";
 import "./index.css";
 import withMetaMask from "./hoc/withMetaMask";
 
 
 function App() {
-  const CertificateHomeWithMetaMask = withMetaMask(CertificateHome);
   return (
     <>
       <Router>
@@ -26,6 +26,7 @@ function App() {
           <Route path="/certificate/issue" element={<CertificateIssue />} />
           <Route path="/certificate/issued" element={<IssuedCertificates />} />
           <Route path="/certificate/view/:id" element={<CertificateDetails />} />
+          <Route path="/certificate/revoke" element={<CertificateRevoke/>} />
         </Routes>
         <Footer/>
         <ScrollToTop/>

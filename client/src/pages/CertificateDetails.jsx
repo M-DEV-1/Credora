@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
+import withMetaMask from "../hoc/withMetaMask";
 
-function CertificateDetails() {
+function CertificateDetails({ web3, account, error }) {
+  
+  console.log("CertificateDetails Props:", { web3, account, error });
+  
   const { id } = useParams(); // Get the certificate ID from the URL
   const navigate = useNavigate();
 
@@ -38,6 +42,7 @@ function CertificateDetails() {
       setAlertMessage(`Certificate exists!`);
     } else {
       setCertificateExists(false);
+      setAlertMessage(`Certificate does not exist!`);
     }
 
     // Check if this page was opened as a new tab by using a localStorage flag
@@ -60,11 +65,23 @@ function CertificateDetails() {
   }, []);
 
   if (!certificate) {
-    return <div>Certificate not found</div>;
+    return (
+      <div className="text-2xl font-semibold font-mono text-center md:mt-16 md:mb-16 mt-16 mb-16">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+          <strong className="font-bold">Failure! </strong>
+          <span className="block sm:inline">{alertMessage}</span>
+        </div>
+        <Button onClick={() => navigate(-1)} className="mt-12">
+          Go Back
+        </Button>
+      </div>
+    );
   }
 
   return (
-    <section className="container place-items-center gap-10 py-4 md:py-4 mb-4">
+    <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
+      {/* Display error message */}
+      {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="text-center">
         {certificateExists && (
           <div className="bg-green-100  text-green-700 mt-5 px-4 py-3 rounded relative mb-8">
@@ -93,6 +110,17 @@ function CertificateDetails() {
           <hr className="w-full border-t-2 border-gray-300 mt-3" />{" "}
           {/* Bottom line */}
         </div>
+
+        {/* Display connected account */}
+        {account ? (
+          <p className="text-green-500 text-center mb-5">
+            {" "}
+            <strong className="text-green-600">Connected Account:</strong>{" "}
+            {account}{" "}
+          </p>
+        ) : (
+          !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
+        )}
       </div>
 
       <div className="py-12 flex justify-center space-x-8">
@@ -114,4 +142,4 @@ function CertificateDetails() {
   );
 }
 
-export default CertificateDetails;
+export default withMetaMask(CertificateDetails);

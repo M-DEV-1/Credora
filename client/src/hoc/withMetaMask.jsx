@@ -75,6 +75,7 @@ const withMetaMask = (WrappedComponent) => {
         <div className="text-red-500 text-2xl font-semibold font-mono text-center md:mt-16 md:mb-16 mt-16 mb-16">
           <p>{error}</p>
           <img src={metamaskError} alt="Metamask Error" className="mt-12 w-full h-auto object-contain px-24 md:h-[500px]" />
+          <p className="mt-12">If no changes are visible, please refresh the page.</p>
         </div>
       );
     }

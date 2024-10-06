@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import withMetaMask from "../hoc/withMetaMask";
 
-function CertificateHome({ web3, account, error }) { 
+function CertificateHome({ web3, account, error }) {
   console.log("CertificateHome Props:", { web3, account, error });
   return (
     <section className="container place-items-center gap-10 py-16 md:py-20">
@@ -29,14 +29,15 @@ function CertificateHome({ web3, account, error }) {
 
         {/* Display error message */}
         {error && <p className="text-red-500">{error}</p>}
-         
+
         {/* Display connected account */}
         {account ? (
-          <p className="text-green-500"> Connected Account: {account} </p>
+          <p className="text-green-500 text-center"> <strong className="text-green-600">Connected Account:</strong> {account} </p>
         ) : (
           !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
         )}
-            {/* <div className="shadow"></div> */}
+        
+        {/* <div className="shadow"></div> */}
         <div className="py-12 flex justify-center space-x-10">
           {" "}
           {/* Changed this line */}
@@ -45,7 +46,7 @@ function CertificateHome({ web3, account, error }) {
           </Link>
           <Link to="/certificate/issue">
             <Button>Issue Certificates</Button>
-          </Link>      
+          </Link>
         </div>
       </div>
     </section>
