@@ -1,6 +1,6 @@
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { Card, CardDescription, CardHeader, CardTitle } from "../components/ui/card"; // Import Card components
 import React from "react";
 import withMetaMask from "../hoc/withMetaMask";
  
@@ -31,16 +31,22 @@ function IssuedCertificates({ web3, account, error }) {
 
         <div className="mt-10">
           <h2 className="text-3xl font-semibold mb-4">Existing Certificates:</h2>
-          <ul className="list-disc list-inside">
-          {certificates.map(cert => (
-          <li key={cert.id}>
-            <Link to={`/certificate/${cert.id}`}>{cert.name}</Link>
-          </li>
-        ))}
-          </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> {/* Grid layout for cards */}
+            {certificates.map(cert => (
+              <Link to={`/certificate/view/${cert.id}`} key={cert.id} className="no-underline">
+                <Card className="hover:scale-105 transition-transform duration-300 hover:border-primary hover:shadow-md hover:shadow-primary-foreground">
+                  <CardHeader>
+                    <CardTitle className="text-xl md:text-2xl">{cert.name}</CardTitle>
+                    <CardDescription className="text-md mt-2">Click to view details</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
       <div className="py-12 flex justify-center space-x-8">
+      
           {" "}
           {/* Changed this line */}
           {/* <Link to="/certificate/view"> */}
@@ -56,8 +62,8 @@ function IssuedCertificates({ web3, account, error }) {
         ) : (
           !error && <p className="text-gray-500 text-center"> Connecting to MetaMask...</p>
         )}
+        
     </section>
-    
   );
 }
 
