@@ -26,7 +26,7 @@ function App() {
           <Route path="/certificate/institute" element={<CertificateIssue />} />
           <Route path="/certificate/issued" element={<IssuedCertificates />} />
           <Route path="/certificate/view/:id" element={<CertificateDetails />} />
-          <Route path="/certificate/revoke" element={<CertificateRevoke/>} />
+          <Route path="/certificate/revoke" element={<CertificateRevoke/>} /> 
         </Routes>
         <Footer/>
         <ScrollToTop/>
