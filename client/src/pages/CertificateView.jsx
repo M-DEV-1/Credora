@@ -25,7 +25,7 @@ function CertificateView({ web3, account, error }) {
   return (
     <div className="app-container flex flex-col min-h-screen">
       <section className="container flex-grow place-items-center gap-10 py-16 md:py-20">
-        <div className="area">
+        {/* <div className="area">
           <ul className="circles">
             <li></li>
             <li></li>
@@ -40,7 +40,7 @@ function CertificateView({ web3, account, error }) {
             <li></li>
             <li></li>
           </ul>
-        </div>
+        </div> */}
         <div className="text-center">
 
           {/* Display error message */}
