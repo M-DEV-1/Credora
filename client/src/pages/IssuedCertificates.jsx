@@ -49,13 +49,14 @@ function IssuedCertificates({ web3, account, error }) {
       
           {" "}
           {/* Changed this line */}
-          {/* <Link to="/certificate/view"> */}
+          {/* <Link to="/certificate/issue"> */}
             <Button className="w-40">Issue Certificates</Button>
           {/* </Link> */}
-          {/* <Link to="/certificate/issue"> */}
+          <Link to="/certificate/revoke">
             <Button className="w-40"  variant="destructive">Revoke Certificate</Button>
-          {/* </Link> */}
+          </Link>
         </div>
+        
         {/* Display connected account */}
         {account ? (
           <p className="text-green-500 text-center"> <strong className="text-green-600">Connected Account:</strong> {account} </p>

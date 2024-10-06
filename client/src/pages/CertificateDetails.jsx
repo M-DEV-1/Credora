@@ -4,9 +4,9 @@ import { Button } from "../components/ui/button";
 import withMetaMask from "../hoc/withMetaMask";
 
 function CertificateDetails({ web3, account, error }) {
-  
+
   console.log("CertificateDetails Props:", { web3, account, error });
-  
+
   const { id } = useParams(); // Get the certificate ID from the URL
   const navigate = useNavigate();
 
@@ -26,11 +26,11 @@ function CertificateDetails({ web3, account, error }) {
       issued: "2024-02-01",
       details: "Details about Certificate B",
     },
-    3: { 
-       name: "Certificate of Excellence - Course C" ,
-       issued: "2024-03-01",
-       details: "Details about Certificate C",
-      },
+    3: {
+      name: "Certificate of Excellence - Course C",
+      issued: "2024-03-01",
+      details: "Details about Certificate C",
+    },
   };
 
   const certificate = certificates[id];
@@ -79,12 +79,12 @@ function CertificateDetails({ web3, account, error }) {
   }
 
   return (
-    <section className="container place-items-center gap-10 py-16 md:py-18 mb-4">
+    <section className="container place-items-center gap-8 py-16 md:py-18 mb-4">
       {/* Display error message */}
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="text-center">
         {certificateExists && (
-          <div className="bg-green-100  text-green-700 mt-5 px-4 py-3 rounded relative mb-8">
+          <div className="bg-green-100  text-green-700 px-4 py-3 rounded relative mb-8">
             <strong className="font-bold">Success! </strong>
             <span className="block sm:inline">{alertMessage}</span>
           </div>
@@ -110,17 +110,6 @@ function CertificateDetails({ web3, account, error }) {
           <hr className="w-full border-t-2 border-gray-300 mt-3" />{" "}
           {/* Bottom line */}
         </div>
-
-        {/* Display connected account */}
-        {account ? (
-          <p className="text-green-500 text-center mb-5">
-            {" "}
-            <strong className="text-green-600">Connected Account:</strong>{" "}
-            {account}{" "}
-          </p>
-        ) : (
-          !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
-        )}
       </div>
 
       <div className="py-12 flex justify-center space-x-8">
@@ -137,7 +126,19 @@ function CertificateDetails({ web3, account, error }) {
             View in New Tab
           </Button>
         )}
+
       </div>
+
+      {/* Display connected account */}
+      {account ? (
+        <p className="text-green-500 text-center">
+          {" "}
+          <strong className="text-green-600">Connected Account:</strong>{" "}
+          {account}{" "}
+        </p>
+      ) : (
+        !error && <p className="text-gray-500"> Connecting to MetaMask...</p>
+      )}
     </section>
   );
 }
