@@ -4,21 +4,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import withMetaMask from "../hoc/withMetaMask";
 
-
 function CertificateIssue({ web3, account, error }) {
-  const [username, setUsername] = useState(""); // State for the username input
+  const [instituteName, setInstituteName] = useState(""); // State for the institute name
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission 
 
-    // Verify password
-    // if (password === correctPassword) {
-    // alert(`Welcome, ${username}!`); // Handle successful verification (you can replace this with any logic)
-    navigate("/certificate/issued");
-    // } else {
-    //   alert("Incorrect password. Please try again."); // Handle failed verification
-    // }
+    // Navigate to CertificateAdd with the institute name
+    navigate("/certificate/add", { state: { instituteName } });
   };
 
   return (
@@ -47,9 +41,9 @@ function CertificateIssue({ web3, account, error }) {
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             type="text"
-            id="instituteName" // Updated id for username
-            // value={username} // Link state to input value
-            // onChange={handleUsernameChange} // Handle changes
+            id="instituteName"
+            value={instituteName} // Link state to input value
+            onChange={(e) => setInstituteName(e.target.value)} // Update state on input change
             placeholder="Institute Name*"
             className="border rounded mt-12 h-12 w-[500px] p-3" // Add margin bottom for spacing
             required
@@ -57,7 +51,7 @@ function CertificateIssue({ web3, account, error }) {
           <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">Institute Account Address</p>
           <input
             type="text"
-            id="instituteID" // Updated id for username
+            id="instituteID"
             value={account} // Set the default value to account
             readOnly // Lock the input section
             placeholder="Institute Account Address*"
@@ -66,18 +60,14 @@ function CertificateIssue({ web3, account, error }) {
           />
           <input
             type="text"
-            id="institute" // Updated id for username
-            // value={username} // Link state to input value
-            // onChange={handleUsernameChange} // Handle changes
+            id="instituteAbbreviation"
             placeholder="Institute Abbreviation*"
             className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
             required
           />
           <input
             type="text"
-            id="instituteLink" // Updated id for username
-            // value={username} // Link state to input value
-            // onChange={handleUsernameChange} // Handle changes
+            id="instituteWebsite"
             placeholder="Institute Website*"
             className="border rounded mt-4 h-12 w-[500px] p-3" // Add margin bottom for spacing
             required

@@ -1,17 +1,21 @@
 import { Button } from "../components/ui/button";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card"; // Import Card components
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Import useState and useEffect
+import { useLocation } from "react-router-dom"; // Import useLocation to access state
 import withMetaMask from "../hoc/withMetaMask";
 
 function CertificateAdd({ web3, account, error }) {
+  const location = useLocation(); // Access location state
+  const { instituteName } = location.state || {}; // Destructure instituteName from state
   const [enteredAddress, setEnteredAddress] = useState(""); // State to store entered address
   const [errorMessage, setErrorMessage] = useState(""); // State to store error messages
+  const [issuedDate, setIssuedDate] = useState(""); // State for issued date
+
+  // Set the issued date to the current date when the component mounts
+  useEffect(() => {
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split("T")[0]; // Format date to YYYY-MM-DD
+    setIssuedDate(formattedDate);
+  }, []); // Empty dependency array to run only on mount
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission
@@ -19,9 +23,8 @@ function CertificateAdd({ web3, account, error }) {
     // Compare entered address with MetaMask account address
     if (enteredAddress.toLowerCase() === account.toLowerCase()) {
       // If addresses match, proceed to add the certificate
-      // Navigate to the certificate add page or perform any additional logic here
-      // For demonstration purposes, we'll display an alert
       alert("Address matches. Proceed to add the certificate.");
+      console.log("Certificate Issued Date:", issuedDate); // You can handle this accordingly
     } else {
       // Set an error message if addresses do not match
       setErrorMessage("The entered address does not match the connected MetaMask account.");
@@ -33,7 +36,7 @@ function CertificateAdd({ web3, account, error }) {
       <div className="text-center">
         <main className="text-5xl mb-6 md:text-6xl font-bold">
           <h1 className="inline">
-            Add{" "}
+            Issue{" "}
             <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
               Certificate
             </span>
@@ -48,28 +51,16 @@ function CertificateAdd({ web3, account, error }) {
             <input
               type="text"
               id="instituteName"
+              value={instituteName || ""} // Set value from passed state, default to empty if not provided
+              readOnly // Make the input read-only
               placeholder="Institute Name*"
-              className="border rounded mt-12 h-12 w-[500px] p-3"
+              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100" // Add margin bottom for spacing
               required
             />
 
-            {/* Display MetaMask account address */}
-            {/* <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
-              Institute Account Address
-            </p>
-            <input
-              type="text"
-              id="instituteID"
-              value={account} // Set value from MetaMask account
-              readOnly
-              placeholder="Institute Account Address*"
-              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
-              required
-            /> */}
-
             {/* Field to enter the institute address for comparison */}
             <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
-              Enter Institute Account Address for Verification
+              Institute Account Address
             </p>
             <input
               type="text"
@@ -84,16 +75,30 @@ function CertificateAdd({ web3, account, error }) {
             {/* Other form fields */}
             <input
               type="text"
-              id="institute"
-              placeholder="Institute Abbreviation*"
+              id="recipientName"
+              placeholder="Recipient Name*"
               className="border rounded mt-4 h-12 w-[500px] p-3"
               required
             />
             <input
               type="text"
-              id="instituteLink"
-              placeholder="Institute Website*"
+              id="recipientAddress"
+              placeholder="Recipient Address*"
               className="border rounded mt-4 h-12 w-[500px] p-3"
+              required
+            />
+
+            {/* Automatically populated issued date */}
+            <p className="mt-3 text-xs text-gray-400 self-start md:ml-[435px] ml-28">
+              Issued Date
+            </p>
+            <input
+              type="text"
+              id="issuedDate"
+              value={issuedDate} // Set value from state
+              readOnly
+              placeholder="Issued Date*"
+              className="border rounded h-12 w-[500px] p-3 text-gray-400 bg-gray-100"
               required
             />
 
@@ -103,24 +108,11 @@ function CertificateAdd({ web3, account, error }) {
               </Button>
             </div>
 
-            {/* Display error message if addresses don't match */}
-            {errorMessage && (
-              <p className="text-red-500 text-center">{errorMessage}</p>
-            )}
+            {/* Display error message if entered address doesn't match */}
+            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           </form>
         </div>
       </div>
-
-      {/* Display connected MetaMask account status */}
-      {account ? (
-        <p className="text-green-500 text-center">
-          <strong className="text-green-600">Connected Account:</strong> {account}
-        </p>
-      ) : (
-        !error && (
-          <p className="text-gray-500 text-center">Connecting to MetaMask...</p>
-        )
-      )}
     </section>
   );
 }
