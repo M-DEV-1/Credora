@@ -1,22 +1,22 @@
 import { Button } from "../components/ui/button";
-import React, { useState } from "react"; // Import useState for managing state
-import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
 function CertificateView() {
   const [inputValue, setInputValue] = useState(""); // State for the input field
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (event) => {
     setInputValue(event.target.value); // Update input value
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
-    if (inputValue) {
-      // Navigate to the certificate details page with the input value
+    event.preventDefault(); // Prevent default form submission 
+    // Navigate to the CertificateDetails route with the inputValue as the ID
+    if (inputValue.trim()) {
       navigate(`/certificate/view/${inputValue}`);
     } else {
-      alert("Please enter a valid Certificate ID");
+      alert("Please enter a valid certificate ID");
     }
   };
 
@@ -42,6 +42,7 @@ function CertificateView() {
           </span>
         </p>
 
+        {/* Form to capture the certificate ID */}
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             type="text"
@@ -49,15 +50,14 @@ function CertificateView() {
             value={inputValue}
             onChange={handleChange}
             placeholder="Certificate ID"
-            className="border rounded mt-12 h-12 w-[570px] p-3" // Add margin bottom for spacing
+            className="border rounded mt-12 h-12  w-[570px] p-3"
           />
           <div className="py-8 flex justify-center space-x-10">
             <Button className="w-40" type="submit">Submit</Button>
           </div>
         </form>
-
         <div className="py-3">
-          <p className="font-bold text-xl">This is what a Certificate Hash looks like:</p>
+          <p className="font-bold text-xl">This is what a Certificate Hash looks like </p>
           <p className="mt-4">4027181f1b5ab220b4fcab3ed178149338cb5916629c92efdd8c2a32d4adb999</p>
         </div>
       </div>
