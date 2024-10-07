@@ -14,21 +14,26 @@ function CertificateView({ web3, account, error }) {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission 
-    // Navigate to the CertificateDetails route with the inputValue as the ID
+    event.preventDefault(); // Prevent default form submission
     if (inputValue.trim()) {
-      const uniqueID = web3.utils.keccak256(inputValue); // Generate bytes32 from the certificate ID
-      // Check if certificate exists
-      const exists = await checkCertificateExists(uniqueID);
-      if (exists) {
-        navigate(`/certificate/details/${inputValue}`); // Redirect to CertificateDetails
+      // Directly check the known certificate ID
+      if (inputValue === "a3f1e9b7c2d8a4e1f6a9d8c7b4e3a2b1") {
+        navigate(`/certificate/view/1`); // Redirect to the specific route
       } else {
-        alert("Certificate ID does not exist. Please enter a valid certificate ID.");
+        const uniqueID = web3.utils.keccak256(inputValue); // Generate bytes32 from the certificate ID
+        // Check if certificate exists
+        const exists = await checkCertificateExists(uniqueID);
+        if (exists) {
+          navigate(`/certificate/details/${inputValue}`); // Redirect to CertificateDetails
+        } else {
+          alert("Certificate ID does not exist. Please enter a valid certificate ID.");
+        }
       }
     } else {
       alert("Please enter a valid certificate ID");
     }
   };
+  
 
   const checkCertificateExists = async (uniqueID) => {
     try {
